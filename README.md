@@ -1,5 +1,5 @@
 # Hardle
-Hardle brings the original Wordle back to it's Mastermind roots.
+Hardle brings the original Wordle back to its Mastermind roots.
 
 The original version of Hardle was made in Java using a library from my CS Fundies 2 course at Northeastern University.
 
