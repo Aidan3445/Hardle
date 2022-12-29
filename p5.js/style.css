@@ -1,0 +1,10 @@
+html,
+body.centered {
+  margin: 300;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+canvas {
+  display: block;
+}
