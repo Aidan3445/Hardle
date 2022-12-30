@@ -9,7 +9,7 @@ class WordGuess {
     this.tiles = []; // list of letter tiles to display
     this.setup();
   }
-  
+
   // setup a new guess
   setup() {
     let tiles = [];
@@ -21,8 +21,10 @@ class WordGuess {
 
   // add a letter to the guess
   addLetter(letter) {
-    if (this.word.length < this.secretWord.length &&
-        alphabet.indexOf(letter) != -1) {
+    if (
+      this.word.length < this.secretWord.length &&
+      alphabet.indexOf(letter) != -1
+    ) {
       this.word.push(letter);
     }
   }
@@ -58,14 +60,14 @@ class WordGuess {
       t.show(x, y, tileSize);
     }
   }
-  
+
   // passes clicks onto the tiles
   clicked(x, y) {
     for (let t of this.tiles) {
-        t.clicked(x, y);
+      t.clicked(x, y);
     }
   }
-  
+
   // reset colors of all tiles in the guess
   resetColors() {
     for (let i = 0; i < 5; i++) {
@@ -98,7 +100,7 @@ class WordGuess {
     }
     this.pegs = new Pegs(yellow, green, this.guessed);
   }
-  
+
   // make a guess if the word is valid, otherwise alert that the word is invalid
   guessMade(wordLength, allWords) {
     let string = "";
@@ -137,7 +139,7 @@ class WordGuess {
     wg.guessed = json.guessed;
     wg.secretWord = json.secretWord;
     wg.win = json.win;
-    wg.getPegs()
+    wg.getPegs();
     return wg;
   }
 }
@@ -145,22 +147,26 @@ class WordGuess {
 // class for the color pegs of a guess based on the closeness to the secret word
 class Pegs {
   constructor(y, g, guessed) {
-    this.colors = [ // pegs start out all white
+    this.colors = [
+      // pegs start out all white
       color("white"),
       color("white"),
       color("white"),
       color("white"),
       color("white"),
-    ]; 
-    for (let i = 0; i < y; i++) { // replace the first y# pegs with yellow
+    ];
+    for (let i = 0; i < y; i++) {
+      // replace the first y# pegs with yellow
       this.colors[i] = color(255, 224, 71);
     }
-    for (let i = 0; i < g; i++) { // replace the next g# pegs with green
+    for (let i = 0; i < g; i++) {
+      // replace the next g# pegs with green
       this.colors[i + y] = color(78, 153, 40);
     }
     if (guessed) {
-      for (let i = 0; i < 5 - y - g; i++) { // if guessed then remaining pegs are grey
-        this.colors[i + y + g] = color(175, 175, 175)
+      for (let i = 0; i < 5 - y - g; i++) {
+        // if guessed then remaining pegs are grey
+        this.colors[i + y + g] = color(175, 175, 175);
       }
     }
   }

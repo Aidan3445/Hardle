@@ -1,4 +1,4 @@
-// class for digital keyboard 
+// class for digital keyboard
 class Keyboard {
   constructor(h) {
     this.qwerty = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]; // top row

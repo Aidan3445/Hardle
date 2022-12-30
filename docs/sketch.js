@@ -4,14 +4,40 @@ let letters = []; // list of all letter images
 let stats; // stats object
 let day; // Hardle day number
 
-let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-                "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
-                "U", "V", "W", "X", "Y", "Z", "_"];
+let alphabet = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  "_",
+];
 
 function preload() {
   words = new WordleWords();
   for (let i = 0; i < 27; i++) {
-    letters[i] = loadImage("images/tiles/" + alphabet[i] + "_black.png")
+    letters[i] = loadImage("images/tiles/" + alphabet[i] + "_black.png");
   }
 }
 
@@ -19,7 +45,8 @@ function setup() {
   createCanvas(400, 530);
   day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000); // get current hardle day
   stats = getItem("stats"); // load stats item from local browser storage
-  if (stats == null) { // if no stats object is found make a new one
+  if (stats == null) {
+    // if no stats object is found make a new one
     stats = {
       s: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       p: -1,
@@ -27,7 +54,8 @@ function setup() {
   }
   let stored = getItem("Hardle" + day); // load hardle from today
   game = new Hardle(words);
-  if (stored != null) { // if a game was started load that into the new game
+  if (stored != null) {
+    // if a game was started load that into the new game
     game.guessCount = stored.guessCount;
     game.guesses = aMap(stored.guesses, WordGuess.fromJSON);
     game.secretWordIndex = stored.secretWordIndex;
@@ -51,8 +79,6 @@ function keyPressed() {
 function touchStarted() {
   game.clicked(mouseX, mouseY);
 }
-
-
 
 function updateStats(guesses) {
   let i = guesses % game.totalGuesses;

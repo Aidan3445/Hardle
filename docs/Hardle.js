@@ -22,7 +22,7 @@ class Hardle {
     this.guessCount = 0;
     this.guesses = [];
     for (let i = 0; i < this.totalGuesses; i++) {
-      let guess = new WordGuess(this.w.secretWords[this.secretWordIndex])
+      let guess = new WordGuess(this.w.secretWords[this.secretWordIndex]);
       this.guesses.push(guess);
     }
   }
@@ -70,7 +70,7 @@ class Hardle {
       copyPaste += "\r" + tempBoxes;
     }
     copyToClipboard(copyPaste + "\rtinyurl.com/hardlegame");
-    alert(copyPaste +  "\rtinyurl.com/hardlegame" + "\r\rCopy to clipboard.");
+    alert(copyPaste + "\rtinyurl.com/hardlegame" + "\r\rCopy to clipboard.");
   }
 
   // make the share button
@@ -134,7 +134,7 @@ class Hardle {
       }
     }
   }
-  
+
   // passes clicks onto the tiles
   clicked(x, y) {
     for (let i = 0; i < this.guessCount; i++) {
