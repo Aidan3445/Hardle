@@ -73,11 +73,12 @@ class Hardle {
       boxes.push(tempBoxes);
       copyPaste += "\r" + tempBoxes;
     }
+    copyPaste += "\rhttps://hardle.netlify.app/";
     window.navigator.clipboard
-      .writeText(copyPaste + "\rtinyurl.com/hardlegame")
+      .writeText(copyPaste)
       .then(function (x) {
         window.alert(
-          copyPaste + "\rhttps://hardle.netlify.app/" + "\r\rCopy to clipboard."
+          copyPaste + "\r\rCopy to clipboard."
         );
       });as
   }
