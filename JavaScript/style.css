@@ -1,0 +1,20 @@
+html,
+body.centered {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  min-height: 100vh; /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+ }
+
+#sketch {
+position: relative;
+}

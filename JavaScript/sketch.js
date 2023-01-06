@@ -4,6 +4,8 @@ let letters = []; // list of all letter images
 let stats; // stats object
 let day; // Hardle day number
 
+let cnv; // Canvas for local button placement
+
 let alphabet = [
   "A",
   "B",
@@ -42,7 +44,12 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 530);
+  cnv = createCanvas(400, 530);
+  cnv.parent("sketch");
+  let sketch = document.getElementById("sketch");
+  let scale = document.documentElement.scrollHeight / 530 * 0.9;
+  console.log(scale);
+  sketch.style.zoom = scale;
   day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000); // get current hardle day
   stats = getItem("stats"); // load stats item from local browser storage
   if (stats == null) {
@@ -87,27 +94,6 @@ function updateStats(guesses) {
     stats.p = game.secretWordIndex;
   }
   storeItem("stats", stats);
-}
-
-// p5js Copy Text to Clipboard
-// by Olaf Val
-// based on example by Techoverflow
-// https://techoverflow.net/2018/03/30/copying-strings-to-the-clipboard-using-pure-javascript/
-function copyToClipboard(text) {
-  // Create new element
-  var el = document.createElement("textarea");
-  // Set value (string to be copied)
-  el.value = text;
-  // Set non-editable to avoid focus and move outside of view
-  // el.setAttribute('readonly', '');
-  // el.style = {position: 'absolute', left: '-9999px'};
-  document.body.appendChild(el);
-  // Select text inside element
-  el.select();
-  // Copy text to clipboard
-  document.execCommand("copy");
-  // Remove temporary element
-  document.body.removeChild(el);
 }
 
 function aMap(array, func) {

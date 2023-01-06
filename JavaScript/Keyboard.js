@@ -9,9 +9,11 @@ class Keyboard {
     this.tileHeight = h / 4; // height of each key
   }
 
-  // show the keyboard, the keyboard is made of DOM buttons which do
+  // show the keyboard, the keyboard is made of DOM element buttons which do
   // not need to be redrawn. This should only be called once.
-  show() {
+  create() {
+    let keyboard = createElement("keyboard");
+    keyboard.parent("sketch");
     // make top row
     for (let i = 0; i < this.qwerty.length; i++) {
       let l = this.qwerty[i];
@@ -24,6 +26,7 @@ class Keyboard {
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 14),
         415
       );
+      k.parent(keyboard);
     }
     // make middle row
     for (let i = 0; i < this.asdf.length; i++) {
@@ -37,6 +40,7 @@ class Keyboard {
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 8.7),
         455
       );
+      k.parent(keyboard);
     }
     // make bottom row
     for (let i = 0; i < this.zxcv.length; i++) {
@@ -50,6 +54,7 @@ class Keyboard {
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 4.85),
         495
       );
+      k.parent(keyboard);
     }
     // non-letter keys
     let enter = createButton("ENTER");
@@ -58,11 +63,13 @@ class Keyboard {
     });
     enter.size(this.tileWidth * 1.75, this.tileHeight);
     enter.position(21, 495);
+    enter.parent(keyboard);
     let del = createButton("⌫");
     del.mouseClicked(function () {
       game.keyPressed("⌫");
     });
     del.size(this.tileWidth * 1.75, this.tileHeight);
     del.position(334.5, 495);
+    del.parent(keyboard);
   }
 }

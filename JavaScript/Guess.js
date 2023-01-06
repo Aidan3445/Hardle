@@ -99,6 +99,7 @@ class WordGuess {
       this.win = true;
     }
     this.pegs = new Pegs(yellow, green, this.guessed);
+    return [5 - yellow - green, yellow, green]
   }
 
   // make a guess if the word is valid, otherwise alert that the word is invalid

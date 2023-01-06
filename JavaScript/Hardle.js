@@ -29,7 +29,7 @@ class Hardle {
 
   // additional setup buttons and screens
   board() {
-    this.keyboard.show();
+    this.keyboard.create();
     this.makeInfoButton();
     this.makeResetButton();
     this.winScreen(this.win);
@@ -69,13 +69,19 @@ class Hardle {
       boxes.push(tempBoxes);
       copyPaste += "\r" + tempBoxes;
     }
-    copyToClipboard(copyPaste + "\rtinyurl.com/hardlegame");
-    alert(copyPaste + "\rtinyurl.com/hardlegame" + "\r\rCopy to clipboard.");
+    window.navigator.clipboard
+      .writeText(copyPaste + "\rtinyurl.com/hardlegame")
+      .then(function (x) {
+        window.alert(
+          copyPaste + "\rtinyurl.com/hardlegame" + "\r\rCopy to clipboard."
+        );
+      });
   }
 
   // make the share button
   makeShareButton() {
     let shareButton = createButton("SHARE");
+    shareButton.parent(cnv);
     shareButton.style("font-size", "28px");
     shareButton.style("color", "black");
     shareButton.style("background-color", "rgb(119, 216, 71)");
@@ -84,34 +90,39 @@ class Hardle {
     shareButton.mouseClicked(function () {
       game.share();
     });
+    shareButton.parent("sketch");
   }
 
   // show tutorial screen
   showInfo() {
     let info = createImg("/images/info.png", "");
     info.size(400, 530);
-    info.position(8, 8);
+    info.position(0, 0);
     info.mousePressed(() => info.remove());
+    info.parent("sketch");
   }
 
   // make tutorial screen toggle button
   makeInfoButton() {
     let infoButton = createImg("/images/i.png", "");
+    // infoButton.parent(cnv)
     infoButton.size(30, 30);
     infoButton.position(width * 0.06, 17);
     infoButton.mousePressed(() => this.showInfo());
+    infoButton.parent("sketch");
   }
 
   // make a reset colors button
   makeResetButton() {
     let resetButton = createImg("/images/reset.png", "");
     resetButton.size(60, 30);
-    resetButton.position(width * 0.86, 17);
+    resetButton.position(width * 0.835, 17);
     resetButton.mousePressed(() => {
       for (let guess of this.guesses) {
         guess.resetColors();
       }
     });
+    resetButton.parent("sketch");
   }
 
   // takes physical and virtual keyboard inputs
