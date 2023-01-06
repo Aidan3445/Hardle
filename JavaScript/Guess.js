@@ -83,6 +83,7 @@ class WordGuess {
       string += s;
     }
     if (this.word.length == wordLength && allWords.indexOf(string) != -1) {
+      this.guessed = true;
       this.enable();
     } else if (this.word.length == wordLength) {
       let invalid = createButton("Not in the word list.");
