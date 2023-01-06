@@ -107,8 +107,9 @@ class WordGuess {
 
   // enable clicking to change colors
   enable() {
-    this.guessed = true;
-    this.getPegs();
+    if (this.guessed) {
+      this.getPegs();
+    }
     for (let i = 0; i < this.word.length; i++) {
       this.tiles[i].enable();
     }
