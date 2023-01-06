@@ -23,8 +23,8 @@ class Keyboard {
       });
       k.size(this.tileWidth, this.tileHeight);
       k.position(
-        width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 14),
-        415
+        width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 17),
+        410
       );
       k.parent(keyboard);
     }
@@ -37,8 +37,8 @@ class Keyboard {
       });
       k.size(this.tileWidth, this.tileHeight);
       k.position(
-        width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 8.7),
-        455
+        width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 9.8),
+        450
       );
       k.parent(keyboard);
     }
@@ -51,8 +51,8 @@ class Keyboard {
       });
       k.size(this.tileWidth, this.tileHeight);
       k.position(
-        width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 4.85),
-        495
+        width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 5.2),
+        490
       );
       k.parent(keyboard);
     }
@@ -61,15 +61,15 @@ class Keyboard {
     enter.mouseClicked(function () {
       game.keyPressed("ENTER");
     });
-    enter.size(this.tileWidth * 1.75, this.tileHeight);
-    enter.position(21, 495);
+    enter.size(this.tileWidth * 2, this.tileHeight);
+    enter.position(10, 490);
     enter.parent(keyboard);
     let del = createButton("⌫");
     del.mouseClicked(function () {
       game.keyPressed("⌫");
     });
-    del.size(this.tileWidth * 1.75, this.tileHeight);
-    del.position(334.5, 495);
+    del.size(this.tileWidth * 2, this.tileHeight);
+    del.position(329, 490);
     del.parent(keyboard);
   }
 }

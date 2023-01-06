@@ -7,6 +7,7 @@ class Letter {
     this.y = y;
     this.size = size;
     this.tile = this.create();
+    this.clickable = false;
   }
 
   // draw the letter at x, y with given size
@@ -32,19 +33,27 @@ class Letter {
   // update the letter of the tile
   update(index) {
     this.letterIndex = index;
-    this.tile = document.getElementById(str(this.x) + str(this.y));
     this.tile.remove();
     this.tile = this.create();
+    // console.log(this.tile, index);
   }
 
   // update color
   clicked() {
-    this.color = (this.color + 1) % 4;
-    this.update(this.letterIndex);
+    if (this.clickable) {
+      this.color = (this.color + 1) % 4;
+      this.update(this.letterIndex);
+    }
+  }
+
+  // add color change on click
+  enable() {
+    this.clickable = true;
   }
 
   // reset color to 0
   resetColor() {
     this.color = 0;
+    this.update(this.letterIndex);
   }
 }

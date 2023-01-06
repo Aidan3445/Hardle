@@ -72,7 +72,7 @@ function setup() {
     game.tileSize = stored.tileSize;
     game.totalGuesses = stored.totalGuesses;
     game.win = stored.win;
-    aMap(stored.guesses, WordGuess.fromJSON)
+    game.guesses = aMap(stored.guesses, WordGuess.fromJSON);
     game.board();
   }
 }

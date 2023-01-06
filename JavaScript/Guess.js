@@ -1,7 +1,7 @@
 // class for guesses
 class WordGuess {
-  constructor(wordleWord, index, tileSize) {
-    this.word = []; // list of charaters/string-letters in the guess
+  constructor(wordleWord, index, tileSize, word=[]) {
+    this.word = word; // list of charaters/string-letters in the guess
     this.index = index; // number of the guess
     this.guessed = false; // has the word been guessed or is it being played currently
     this.secretWord = wordleWord.split(""); //  list of charaters/string-letters in the secret word
@@ -20,13 +20,16 @@ class WordGuess {
       let y = (this.index * this.tileSize * 11) / 10 + this.tileSize / 3;
       this.tiles.push(new Letter(x, y, this.tileSize));
     }
+    this.updateAll();
   }
 
   // add a letter to the guess
   addLetter(letter) {
     let index = alphabet.indexOf(letter);
     if (this.word.length < this.secretWord.length && index != -1) {
-      this.tiles[this.word.length].update(index);
+      let tile = this.tiles[this.word.length];
+      tile.update(index);
+      tile.resetColor();
       this.word.push(letter);
     }
   }
@@ -80,8 +83,7 @@ class WordGuess {
       string += s;
     }
     if (this.word.length == wordLength && allWords.indexOf(string) != -1) {
-      this.guessed = true;
-      this.getPegs();
+      this.enable();
     } else if (this.word.length == wordLength) {
       let invalid = createButton("Not in the word list.");
       invalid.position(120, 50);
@@ -95,10 +97,20 @@ class WordGuess {
 
   // update all tiles in word
   updateAll() {
-    for (let letter in this.word) {
+    for (let i = 0; i < this.word.length; i++) {
+      let letter = this.word[i];
       let index = alphabet.indexOf(letter);
-      let tile = this.tiles[this.word.indexOf(letter)]
+      let tile = this.tiles[i];
       tile.update(index);
+    }
+  }
+
+  // enable clicking to change colors
+  enable() {
+    this.guessed = true;
+    this.getPegs();
+    for (let i = 0; i < this.word.length; i++) {
+      this.tiles[i].enable();
     }
   }
 
@@ -117,14 +129,11 @@ class WordGuess {
 
   // create guess object from json
   static fromJSON(json) {
-    console.log(json);
     let secretWord = json.secretWord.join("");
-    let wg = new WordGuess(secretWord, json.index, json.tileSize);
-    wg.word = json.word;
+    let wg = new WordGuess(secretWord, json.index, json.tileSize, json.word);
     wg.guessed = json.guessed;
     wg.win = json.win;
-    wg.getPegs();
-    wg.updateAll();
+    wg.enable();
     return wg;
   }
 }

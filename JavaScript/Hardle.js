@@ -29,6 +29,10 @@ class Hardle {
 
   // additional setup buttons and screens
   board() {
+    for (let i = 0; i < this.guessCount; i++) {
+      this.guesses[i].updateAll();
+      this.guesses[i].enable();
+    }
     this.keyboard.create();
     this.makeInfoButton();
     this.makeResetButton();
@@ -73,9 +77,9 @@ class Hardle {
       .writeText(copyPaste + "\rtinyurl.com/hardlegame")
       .then(function (x) {
         window.alert(
-          copyPaste + "\rtinyurl.com/hardlegame" + "\r\rCopy to clipboard."
+          copyPaste + "\rhttps://hardle.netlify.app/" + "\r\rCopy to clipboard."
         );
-      });
+      });as
   }
 
   // make the share button
@@ -96,6 +100,8 @@ class Hardle {
   // show tutorial screen
   showInfo() {
     let info = createImg("/images/info.png", "");
+    info.id("info")
+    document.getElementById("info").style.zIndex = 10;
     info.size(400, 530);
     info.position(0, 0);
     info.mousePressed(() => info.remove());
