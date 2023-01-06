@@ -69,7 +69,7 @@ function setup() {
 
 function draw() {
   background("lightgray");
-  // game.play();
+  game.play();
 }
 
 function keyPressed() {
