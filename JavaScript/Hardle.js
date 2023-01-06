@@ -22,7 +22,7 @@ class Hardle {
     this.guessCount = 0;
     this.guesses = [];
     for (let i = 0; i < this.totalGuesses; i++) {
-      let guess = new WordGuess(this.w.secretWords[this.secretWordIndex]);
+      let guess = new WordGuess(this.w.secretWords[this.secretWordIndex], i, this.tileSize);
       this.guesses.push(guess);
     }
   }
@@ -105,7 +105,6 @@ class Hardle {
   // make tutorial screen toggle button
   makeInfoButton() {
     let infoButton = createImg("/images/i.png", "");
-    // infoButton.parent(cnv)
     infoButton.size(30, 30);
     infoButton.position(width * 0.06, 17);
     infoButton.mousePressed(() => this.showInfo());
@@ -143,13 +142,6 @@ class Hardle {
       } else {
         current.addLetter(key.toUpperCase());
       }
-    }
-  }
-
-  // passes clicks onto the tiles
-  clicked(x, y) {
-    for (let i = 0; i < this.guessCount; i++) {
-      this.guesses[i].clicked(x, y);
     }
   }
 
@@ -284,9 +276,6 @@ class Hardle {
     } else {
       for (let i = 0; i < this.totalGuesses; i++) {
         this.guesses[i].pegs.draw(i, this.tileSize);
-        for (let j = 0; j < this.wordLength; j++) {
-          this.guesses[i].update(j, i, this.tileSize);
-        }
       }
     }
   }

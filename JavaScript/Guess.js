@@ -1,30 +1,32 @@
 // class for guesses
 class WordGuess {
-  constructor(wordleWord) {
+  constructor(wordleWord, index, tileSize) {
     this.word = []; // list of charaters/string-letters in the guess
+    this.index = index; // number of the guess
     this.guessed = false; // has the word been guessed or is it being played currently
     this.secretWord = wordleWord.split(""); //  list of charaters/string-letters in the secret word
     this.pegs = new Pegs(0, 0); // pegs start off as blank
     this.win = false; // has the game been won?
     this.tiles = []; // list of letter tiles to display
+    this.tileSize = tileSize; // size of tiles
     this.setup();
   }
 
   // setup a new guess
   setup() {
-    let tiles = [];
     for (let i = 0; i < 5; i++) {
-      tiles.push(new Letter());
+      let x =
+        width / 2 - this.tileSize * 3.5 + i * this.tileSize * 1.1 + width / 25;
+      let y = (this.index * this.tileSize * 11) / 10 + this.tileSize / 3;
+      this.tiles.push(new Letter(x, y, this.tileSize));
     }
-    this.tiles = tiles;
   }
 
   // add a letter to the guess
   addLetter(letter) {
-    if (
-      this.word.length < this.secretWord.length &&
-      alphabet.indexOf(letter) != -1
-    ) {
+    let index = alphabet.indexOf(letter);
+    if (this.word.length < this.secretWord.length && index != -1) {
+      this.tiles[this.word.length].update(index);
       this.word.push(letter);
     }
   }
@@ -32,40 +34,9 @@ class WordGuess {
   // delete a letter from the guess
   deleteLetter() {
     this.word.pop();
-    this.tiles[this.word.length].update(26);
-  }
-
-  // update the guess for drawing
-  update(letterIndex, wordIndex, tileSize) {
-    let letter;
-    if (this.word.length > letterIndex) {
-      letter = this.word[letterIndex];
-    } else {
-      letter = " ";
-    }
-    let b = this.tiles[letterIndex];
-    let index = alphabet.indexOf(letter);
-    if (index != -1) {
-      b.update(index);
-    }
-    this.show(wordIndex, tileSize);
-  }
-
-  // draw the guess tiles
-  show(wordIndex, tileSize) {
-    for (let i = 0; i < 5; i++) {
-      let x = width / 2 - tileSize * 3.5 + i * tileSize * 1.1 + width / 25;
-      let y = (wordIndex * tileSize * 11) / 10 + tileSize / 3;
-      let t = this.tiles[i];
-      t.show(x, y, tileSize);
-    }
-  }
-
-  // passes clicks onto the tiles
-  clicked(x, y) {
-    for (let t of this.tiles) {
-      t.clicked(x, y);
-    }
+    let tile = this.tiles[this.word.length];
+    tile.update(26);
+    tile.resetColor();
   }
 
   // reset colors of all tiles in the guess
@@ -99,7 +70,7 @@ class WordGuess {
       this.win = true;
     }
     this.pegs = new Pegs(yellow, green, this.guessed);
-    return [5 - yellow - green, yellow, green]
+    return [5 - yellow - green, yellow, green];
   }
 
   // make a guess if the word is valid, otherwise alert that the word is invalid
@@ -122,10 +93,21 @@ class WordGuess {
     return this.guessed;
   }
 
+  // update all tiles in word
+  updateAll() {
+    for (let letter in this.word) {
+      let index = alphabet.indexOf(letter);
+      let tile = this.tiles[this.word.indexOf(letter)]
+      tile.update(index);
+    }
+  }
+
   // convert guess object to json
   static toJSON(obj) {
     let json = {
       word: obj.word,
+      index: obj.index,
+      tileSize: obj.tileSize,
       guessed: obj.guessed,
       secretWord: obj.secretWord,
       win: obj.win,
@@ -135,78 +117,14 @@ class WordGuess {
 
   // create guess object from json
   static fromJSON(json) {
-    let wg = new WordGuess("XXXXX");
+    console.log(json);
+    let secretWord = json.secretWord.join("");
+    let wg = new WordGuess(secretWord, json.index, json.tileSize);
     wg.word = json.word;
     wg.guessed = json.guessed;
-    wg.secretWord = json.secretWord;
     wg.win = json.win;
     wg.getPegs();
+    wg.updateAll();
     return wg;
-  }
-}
-
-// class for the color pegs of a guess based on the closeness to the secret word
-class Pegs {
-  constructor(y, g, guessed) {
-    this.colors = [
-      // pegs start out all white
-      color("white"),
-      color("white"),
-      color("white"),
-      color("white"),
-      color("white"),
-    ];
-    for (let i = 0; i < y; i++) {
-      // replace the first y# pegs with yellow
-      this.colors[i] = color(255, 224, 71);
-    }
-    for (let i = 0; i < g; i++) {
-      // replace the next g# pegs with green
-      this.colors[i + y] = color(78, 153, 40);
-    }
-    if (guessed) {
-      for (let i = 0; i < 5 - y - g; i++) {
-        // if guessed then remaining pegs are grey
-        this.colors[i + y + g] = color(175, 175, 175);
-      }
-    }
-  }
-
-  // draw pegs in the pentagon
-  draw(index, tileSize) {
-    let x = width / 2 + 2.8 * tileSize;
-    let y = (index * tileSize * 11) / 10 + tileSize / 1.2;
-    for (let i = 0; i < this.colors.length; i++) {
-      push();
-      ellipseMode(CENTER);
-      fill(this.colors[i]);
-      translate(p5.Vector.fromAngle(((2 * PI) / 5) * (i - 1.25), 10));
-      ellipse(x, y, tileSize / 5, tileSize / 5);
-      pop();
-    }
-  }
-
-  // convert to json
-  static toJSON(obj) {
-    let y = 0;
-    let g = 0;
-    for (let i of obj.colors) {
-      if (i.levels[1] == 224) {
-        y++;
-      } else if (i.levels[1] == 153) {
-        g++;
-      }
-    }
-    let json = {
-      y: y,
-      g: g,
-    };
-    return json;
-  }
-
-  // create pegs from json
-  static fromJSON(json) {
-    let p = new Pegs(json.y, json.g);
-    return p;
   }
 }

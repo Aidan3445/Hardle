@@ -39,7 +39,11 @@ let alphabet = [
 function preload() {
   words = new WordleWords();
   for (let i = 0; i < 27; i++) {
-    letters[i] = loadImage("images/tiles/" + alphabet[i] + "_black.png");
+    for (let sufx of ["l", "d", "y", "g"]) {
+      letters[i] = loadImage(
+        "images/tiles/" + alphabet[i] + "_" + sufx + ".png"
+      );
+    }
   }
 }
 
@@ -47,8 +51,7 @@ function setup() {
   cnv = createCanvas(400, 530);
   cnv.parent("sketch");
   let sketch = document.getElementById("sketch");
-  let scale = document.documentElement.scrollHeight / 530 * 0.9;
-  console.log(scale);
+  let scale = (document.documentElement.scrollHeight / 530) * 0.9;
   sketch.style.zoom = scale;
   day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000); // get current hardle day
   stats = getItem("stats"); // load stats item from local browser storage
@@ -64,12 +67,12 @@ function setup() {
   if (stored != null) {
     // if a game was started load that into the new game
     game.guessCount = stored.guessCount;
-    game.guesses = aMap(stored.guesses, WordGuess.fromJSON);
     game.secretWordIndex = stored.secretWordIndex;
     game.wordLength = stored.wordLength;
     game.tileSize = stored.tileSize;
     game.totalGuesses = stored.totalGuesses;
     game.win = stored.win;
+    aMap(stored.guesses, WordGuess.fromJSON)
     game.board();
   }
 }
@@ -81,10 +84,6 @@ function draw() {
 
 function keyPressed() {
   game.keyPressed();
-}
-
-function touchStarted() {
-  game.clicked(mouseX, mouseY);
 }
 
 function updateStats(guesses) {
