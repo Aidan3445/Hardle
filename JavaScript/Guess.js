@@ -124,7 +124,7 @@ class WordGuess {
     }
     // update the pegs
     let yellowGreen = this.getPegs();
-    this.pegs = new Pegs(yellowGreen[0], yellowGreen[1], this.guessed);
+    this.pegs = new Pegs(yellowGreen[1], yellowGreen[2], this.guessed);
   }
 
   // draw the tiles and pegs
