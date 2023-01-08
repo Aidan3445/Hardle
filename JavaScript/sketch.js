@@ -56,7 +56,9 @@ function setup() {
   cnv.parent("sketch");
   // scale the entire container to fill screen
   let sketch = document.getElementById("sketch");
-  let scale = (document.documentElement.scrollHeight / 530) * 0.9;
+  let scaleVert = (document.documentElement.scrollHeight / 530) * 0.95;
+  let scaleHori = (document.documentElement.scrollWidth / 400) * 0.95;
+  let scale = Math.min(scaleVert, scaleHori);
   sketch.style.zoom = scale;
   // get current day of hardle
   let day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000);
