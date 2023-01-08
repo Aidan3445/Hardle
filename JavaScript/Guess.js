@@ -81,7 +81,7 @@ class WordGuess {
       this.win = true;
     }
     // return as list of [white, yellow, green] for printing
-    return [yellow, green];
+    return [5 - yellow - green, yellow, green];
   }
 
   // make a guess if the word is valid, otherwise alert that the word is invalid

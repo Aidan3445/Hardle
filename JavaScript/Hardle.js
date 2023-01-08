@@ -75,10 +75,11 @@ class Hardle {
     // for each guess, get the pegs and convert them into strings
     for (let n = 0; n < this.guessCount; n++) {
       let guess = this.guesses[n];
-      let pegCounts = guess.getPegs()[i];
+      let pegCounts = guess.getPegs();
       let tempBoxes = "";
       for (let i = 0; i < 3; i++) {
-        emoji[0].repeat(pegCounts[0]);
+        console.log(pegCounts);
+        tempBoxes += emoji[i].repeat(pegCounts[i]);
       }
       // add each as a new line to the score message
       copyPaste += "\r" + tempBoxes;
