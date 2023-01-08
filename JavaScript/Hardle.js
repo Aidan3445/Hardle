@@ -10,41 +10,49 @@ class Hardle {
     this.wordLength = 5; // number of letters in the words
     this.tileSize = 40; // size of each tile
     this.totalGuesses = 9; // number if guesses you get;
-    this.win = false;
-    this.keyboard = new Keyboard(140);
+    this.win = false; // did the player win
     this.setup();
     this.board();
   }
 
-  // setup a new game
+  // fill in guess list with WordGuess objects
   setup() {
-    this.win = false;
-    this.guessCount = 0;
-    this.guesses = [];
     for (let i = 0; i < this.totalGuesses; i++) {
-      let guess = new WordGuess(this.w.secretWords[this.secretWordIndex], i, this.tileSize);
+      let guess = new WordGuess(
+        this.w.secretWords[this.secretWordIndex],
+        i,
+        this.tileSize
+      );
       this.guesses.push(guess);
     }
   }
 
   // additional setup buttons and screens
   board() {
-    for (let i = 0; i < this.guessCount; i++) {
-      this.guesses[i].updateAll();
-      this.guesses[i].enable();
+    // if the game is over show the share button only
+    if (this.win || this.guessCount == this.totalGuesses) {
+      this.makeShareButton();
+    } else {
+      // otherwise...
+      // update all guesses to show the current game data
+      for (let i = 0; i < this.guessCount; i++) {
+        this.guesses[i].updateAll();
+      }
+      // make the keyboard, info, and reset buttons
+      new Keyboard(this);
+      this.makeInfoButton();
+      this.makeResetButton();
     }
-    this.keyboard.create();
-    this.makeInfoButton();
-    this.makeResetButton();
-    this.winScreen(this.win);
   }
 
   // return a string score of the game i.e "4/9"
   score() {
     let guessOrX;
+    // if the game was lost X/9 is the score
     if (this.guessCount == this.totalGuesses && !this.win) {
       guessOrX = "X";
     } else {
+      // if the game was won use the number of guesses
       guessOrX = str(this.guessCount);
     }
     let score =
@@ -54,58 +62,62 @@ class Hardle {
       guessOrX +
       "/" +
       str(this.totalGuesses);
+    // return the string
     return score;
   }
 
   // create message for sharing scores
   share() {
+    // start with the score
     let copyPaste = this.score();
-    let boxes = [copyPaste];
+    // list of emojis for the guess pegs
     let emoji = ["⚪", "🟡", "🟢"];
+    // for each guess, get the pegs and convert them into strings
     for (let n = 0; n < this.guessCount; n++) {
       let guess = this.guesses[n];
+      let pegCounts = guess.getPegs()[i];
       let tempBoxes = "";
       for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < guess.getPegs()[i]; j++) {
-          tempBoxes += emoji[i];
-        }
+        emoji[0].repeat(pegCounts[0]);
       }
-      boxes.push(tempBoxes);
+      // add each as a new line to the score message
       copyPaste += "\r" + tempBoxes;
     }
+    print(copyPaste);
     copyPaste += "\rhttps://hardle.netlify.app/";
-    window.navigator.clipboard
-      .writeText(copyPaste)
-      .then(function (x) {
-        window.alert(
-          copyPaste + "\r\rCopy to clipboard."
-        );
-      });as
+    // copy to clipboard and create a popup
+    window.navigator.clipboard.writeText(copyPaste).then(function (x) {
+      window.alert(copyPaste + "\r\rCopy to clipboard.");
+    });
   }
 
   // make the share button
   makeShareButton() {
+    // remove all elements
+    removeElements();
+    // create new share button
     let shareButton = createButton("SHARE");
-    shareButton.parent(cnv);
     shareButton.style("font-size", "28px");
     shareButton.style("color", "black");
     shareButton.style("background-color", "rgb(119, 216, 71)");
     shareButton.size(120, 40);
     shareButton.position(width * 0.6, height * 0.85);
-    shareButton.mouseClicked(function () {
-      game.share();
-    });
+    // when clicked copy and show the share message
+    shareButton.mouseClicked(() => this.share());
+    // set parent for relative position and scaling
     shareButton.parent("sketch");
   }
 
   // show tutorial screen
   showInfo() {
     let info = createImg("/images/info.png", "");
-    info.id("info")
-    document.getElementById("info").style.zIndex = 10;
+    // tutorial image is always on top
+    info.style("zIndex", "10");
     info.size(400, 530);
     info.position(0, 0);
+    // when clicked hide the image
     info.mousePressed(() => info.remove());
+    // set parent for relative position and scaling
     info.parent("sketch");
   }
 
@@ -114,7 +126,9 @@ class Hardle {
     let infoButton = createImg("/images/i.png", "");
     infoButton.size(30, 30);
     infoButton.position(width * 0.06, 17);
+    // when clicked show the tutorial image
     infoButton.mousePressed(() => this.showInfo());
+    // set parent for relative position and scaling
     infoButton.parent("sketch");
   }
 
@@ -123,47 +137,60 @@ class Hardle {
     let resetButton = createImg("/images/reset.png", "");
     resetButton.size(60, 30);
     resetButton.position(width * 0.835, 17);
+    // when clicked loop throuhgh guesses and reset colors
     resetButton.mousePressed(() => {
       for (let guess of this.guesses) {
         guess.resetColors();
       }
     });
+    // set parent for relative position and scaling
     resetButton.parent("sketch");
   }
 
   // takes physical and virtual keyboard inputs
-  keyPressed(l) {
+  keyPressed(keyPressed) {
+    // make sure the game is still live
     if (this.guessCount < this.totalGuesses && !this.win) {
+      // get the current word
       let current = this.guesses[this.guessCount];
-      if (l != null && l != "⌫" && l != "ENTER") {
-        key = l;
-      }
-      if (key == "Backspace" || l == "⌫") {
+      // check for delete/backspace
+      if (keyPressed == "Backspace" || keyPressed == "⌫") {
         current.deleteLetter();
-      } else if (key == "Enter" || l == "ENTER") {
+        // check for enter/return
+      } else if (keyPressed == "Enter" || keyPressed == "ENTER") {
+        // ensure valid guess before submitting
         if (current.guessMade(this.wordLength, this.w.allWords)) {
+          // increase guess count and store current game
           this.guessCount++;
-          this.winScreen(current.win || this.guessCount == this.totalGuesses);
           this.storeData();
+          // the game ends after the last guess or the correct guess
+          if (current.win || this.guessCount == this.totalGuesses) {
+            this.gameOver(current.win);
+          }
         }
       } else {
-        current.addLetter(key.toUpperCase());
+        // pass on to current guess to determine which letter (if any) was pressed
+        current.addLetter(keyPressed.toUpperCase());
       }
     }
   }
 
-  // displays the winscreen of the game is over
-  winScreen(won) {
+  // end the game
+  gameOver(won) {
+    // update the state of the game to won or lost
     this.win = won;
-    if (this.win) {
-      removeElements();
-      this.makeShareButton();
-      updateStats(this.guessCount);
-    }
+    // create remove other buttons and share button
+    this.makeShareButton();
+    // store the data from the game
+    this.storeData();
+    // update the stats
+    this.updateStats();
   }
 
+  // what to show on the end screen
   endScreen() {
     push();
+    // score text and word reveal
     noStroke();
     textAlign(CENTER, CENTER);
     rectMode(CENTER);
@@ -175,8 +202,10 @@ class Hardle {
       width / 2,
       50
     );
+    // draw statistics using global stats variable (from sketch.js)
     this.stats(stats);
     textSize(20);
+    // new hardle countdown
     text("NEXT HARDLE", width * 0.25, height * 0.82);
     textSize(40);
     text(this.getTimer(), width * 0.25, height * 0.92);
@@ -184,24 +213,29 @@ class Hardle {
     pop();
   }
 
-  stats(stats) {
-    let s = stats.s;
+  // show stats bars for overall score
+  stats(statistics) {
+    // get guess count information from stats
+    let scores = statistics.s;
     fill(0);
     textSize(20);
+    // show basic games played and win/loss information
     text("Stats:", width / 2, height / 4.5);
     textSize(25);
     text("Played        Win %", width / 2, height / 3.5);
-    let total = s.reduce((partialSum, a) => partialSum + a, 0);
+    let total = scores.reduce((partialSum, a) => partialSum + a, 0);
     text(total, width / 3, height / 2.8);
     text(
       nf(
-        (s.reduce((partialSum, a) => partialSum + a, -s[0]) / total) * 100,
+        (scores.reduce((partialSum, a) => partialSum + a, -scores[0]) / total) *
+          100,
         2,
         2
       ),
       (width * 2) / 3,
       height / 2.8
     );
+    // stats bar text for history of number of guesses taken
     textSize(20);
     text("Guesses", width / 2, height / 2.4);
     push();
@@ -212,46 +246,50 @@ class Hardle {
     textSize(15);
     text("1\n2\n3\n4\n5\n6\n7\n8\n9", width / 4.5, height / 1.65);
     text(
-      s[1] +
+      scores[1] +
         "\n" +
-        s[2] +
+        scores[2] +
         "\n" +
-        s[3] +
+        scores[3] +
         "\n" +
-        s[4] +
+        scores[4] +
         "\n" +
-        s[5] +
+        scores[5] +
         "\n" +
-        s[6] +
+        scores[6] +
         "\n" +
-        s[7] +
+        scores[7] +
         "\n" +
-        s[8] +
+        scores[8] +
         "\n" +
-        s[9],
+        scores[9],
       (width * 3.5) / 4.5,
       height / 1.65
     );
-    this.statsBars(stats);
+    // draw the stats bars
+    this.statsBars(scores);
   }
 
-  statsBars(stats) {
-    let s = stats.s;
-    let total = s.reduce((partialSum, a) => partialSum + a, 0);
+  // draw rectangles corresponding to win guess-count history
+  statsBars(scores) {
+    // add up total games played
+    let total = scores.reduce((partialSum, a) => partialSum + a, 0);
     push();
     rectMode(CORNER);
     fill("gray");
     stroke(0);
+    // draw grey rectangles with proportional lengths
     if (total != 0) {
-      for (let i = 1; i < s.length; i++) {
+      for (let i = 1; i < scores.length; i++) {
         push();
+        // color them green rather than gray for the current guess count
         if (i == this.guessCount) {
           fill(119, 216, 71);
         }
         rect(
           width / 4,
           height / 2.2 + (i - 1) * 18.75,
-          (width / 2) * (stats.s[i] / total),
+          (width / 2) * (scores[i] / total),
           10
         );
         pop();
@@ -260,6 +298,7 @@ class Hardle {
     pop();
   }
 
+  // get time until next hardle at midnight local time
   getTimer() {
     let time =
       this.addZero(23 - hour()) +
@@ -270,6 +309,7 @@ class Hardle {
     return time;
   }
 
+  // helper function for formatting the timer to 00:00:00 format
   addZero(time) {
     if (str(time).length == 1) {
       time = "0" + time;
@@ -278,15 +318,38 @@ class Hardle {
   }
 
   play() {
+    // set the background
+    background("lightgray");
+    // if the game is over show the end screen
     if (this.win || this.guessCount == this.totalGuesses) {
       this.endScreen();
     } else {
+      // otherwise draw the pegs and the tiles
       for (let i = 0; i < this.totalGuesses; i++) {
-        this.guesses[i].pegs.draw(i, this.tileSize);
+        this.guesses[i].draw();
       }
     }
   }
 
+  // update the stored stats from previous days
+  updateStats() {
+    // represents the index in the score to store the number of guesses:
+    let score = this.guessCount;
+    // score is zero if the game was lost
+    if (!this.win) {
+      score = 0;
+    }
+    // if the current game index is diffrent from the most recently saved index
+    if (stats.p != this.secretWordIndex) {
+      // update score and most recent saved index to avoid double counting
+      stats.s[score]++;
+      stats.p = this.secretWordIndex;
+    }
+    // store in local browser storage
+    storeItem("stats", stats);
+  }
+
+  // store the data from the current game for reloading later
   storeData() {
     let hardle = {
       guessCount: this.guessCount,
@@ -297,10 +360,21 @@ class Hardle {
       totalGuesses: this.totalGuesses,
       win: this.win,
     };
-    storeItem(
-      "Hardle" +
-        floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000),
-      hardle
-    );
+    // store in local browser storage with corresponding date
+    storeItem("Hardle", hardle);
+  }
+
+  // load game from json
+  static loadData(json, words) {
+    let game = new Hardle(words);
+    game.guessCount = json.guessCount;
+    game.secretWordIndex = json.secretWordIndex;
+    game.wordLength = json.wordLength;
+    game.tileSize = json.tileSize;
+    game.totalGuesses = json.totalGuesses;
+    game.win = json.win;
+    game.guesses = aMap(json.guesses, WordGuess.fromJSON);
+    game.board();
+    return game;
   }
 }

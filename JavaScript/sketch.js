@@ -1,12 +1,12 @@
-let game; // game object
-let words; // words object
-let letters = []; // list of all letter images
-let stats; // stats object
-let day; // Hardle day number
+let game; // global game object
+let words; // global words object
+let letters = []; // global list of all letter images
+let stats; // global stats object
 
 let cnv; // Canvas for local button placement
 
 let alphabet = [
+  // global list of letters and "-" to represent blank
   "A",
   "B",
   "C",
@@ -36,25 +36,32 @@ let alphabet = [
   "_",
 ];
 
+// get word lists and images
 function preload() {
   words = new WordleWords();
+  // load each letter in each color
   for (let i = 0; i < 27; i++) {
     for (let sufx of ["l", "d", "y", "g"]) {
-      letters[i] = loadImage(
-        "images/tiles/" + alphabet[i] + "_" + sufx + ".png"
+      letters.push(
+        loadImage("images/tiles/" + alphabet[i] + "_" + sufx + ".png")
       );
     }
   }
 }
 
+// setup the game
 function setup() {
+  // make the canvas and put in the sketch container
   cnv = createCanvas(400, 530);
   cnv.parent("sketch");
+  // scale the entire container to fill screen
   let sketch = document.getElementById("sketch");
   let scale = (document.documentElement.scrollHeight / 530) * 0.9;
   sketch.style.zoom = scale;
-  day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000); // get current hardle day
-  stats = getItem("stats"); // load stats item from local browser storage
+  // get current day of hardle
+  let day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000);
+  // load stats item from local browser storage
+  stats = getItem("stats");
   if (stats == null) {
     // if no stats object is found make a new one
     stats = {
@@ -62,39 +69,28 @@ function setup() {
       p: -1,
     };
   }
-  let stored = getItem("Hardle" + day); // load hardle from today
-  game = new Hardle(words);
-  if (stored != null) {
-    // if a game was started load that into the new game
-    game.guessCount = stored.guessCount;
-    game.secretWordIndex = stored.secretWordIndex;
-    game.wordLength = stored.wordLength;
-    game.tileSize = stored.tileSize;
-    game.totalGuesses = stored.totalGuesses;
-    game.win = stored.win;
-    game.guesses = aMap(stored.guesses, WordGuess.fromJSON);
-    game.board();
+  // load hardle from today
+  let stored = getItem("Hardle");
+  // if a game from today is found load it
+  if (stored != null && stored.secretWordIndex == day) {
+    game = Hardle.loadData(stored, words);
+  } else {
+    // otherwise make a new one
+    game = new Hardle(words);
   }
 }
 
+// the game/draw loop from p5
 function draw() {
-  background("lightgray");
   game.play();
 }
 
+// handle keyboard inputs via p5
 function keyPressed() {
-  game.keyPressed();
+  game.keyPressed(key);
 }
 
-function updateStats(guesses) {
-  let i = guesses % game.totalGuesses;
-  if (stats.p != game.secretWordIndex) {
-    stats.s[i]++;
-    stats.p = game.secretWordIndex;
-  }
-  storeItem("stats", stats);
-}
-
+// map helper function
 function aMap(array, func) {
   newArr = [];
   for (let element of array) {
@@ -103,6 +99,7 @@ function aMap(array, func) {
   return newArr;
 }
 
+// time wait helper fuinction (in milliseconds)
 function sleep(millisecondsDuration) {
   return new Promise((resolve) => {
     setTimeout(resolve, millisecondsDuration);

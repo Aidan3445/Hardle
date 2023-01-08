@@ -10,11 +10,11 @@ class Pegs {
       color("white"),
     ];
     for (let i = 0; i < y; i++) {
-      // replace the first y# pegs with yellow
+      // replace the first y number of pegs with yellow
       this.colors[i] = color(255, 224, 71);
     }
     for (let i = 0; i < g; i++) {
-      // replace the next g# pegs with green
+      // replace the next g number of pegs with green
       this.colors[i + y] = color(78, 153, 40);
     }
     if (guessed) {
@@ -29,6 +29,7 @@ class Pegs {
   draw(index, tileSize) {
     let x = width / 2 + 2.8 * tileSize;
     let y = (index * tileSize * 11) / 10 + tileSize / 1.2;
+    // rotate and draw pegs with corresponding color
     for (let i = 0; i < this.colors.length; i++) {
       push();
       ellipseMode(CENTER);
@@ -43,6 +44,7 @@ class Pegs {
   static toJSON(obj) {
     let y = 0;
     let g = 0;
+    // convert colors to yellow and green counts
     for (let i of obj.colors) {
       if (i.levels[1] == 224) {
         y++;
