@@ -19,6 +19,7 @@ class Keyboard {
     for (let i = 0; i < this.qwerty.length; i++) {
       let l = this.qwerty[i];
       let k = createButton(l);
+      k.style("color", "black");
       // on click pass letter to game
       k.mouseClicked(() => hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -26,13 +27,16 @@ class Keyboard {
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 17),
         410
       );
-      // set parent for organization
+      // set ID and parent
+      k.id(l);
       k.parent(keyboard);
     }
     // make middle row
     for (let i = 0; i < this.asdf.length; i++) {
       let l = this.asdf[i];
       let k = createButton(l);
+      k.id(l);
+      k.style("color", "black");
       // on click pass letter to game
       k.mouseClicked(() => hardleGame.keyPressed(l));
 
@@ -48,6 +52,8 @@ class Keyboard {
     for (let i = 0; i < this.zxcv.length; i++) {
       let l = this.zxcv[i];
       let k = createButton(l);
+      k.id(l);
+      k.style("color", "black");
       // on click pass letter to game
       k.mouseClicked(() => hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -60,6 +66,7 @@ class Keyboard {
     }
     // non-letter keys
     let enter = createButton("ENTER");
+    enter.style("color", "black");
     // on click pass ENTER to game
     enter.mouseClicked(() => hardleGame.keyPressed("ENTER"));
     enter.size(this.tileWidth * 2, this.tileHeight);
@@ -67,6 +74,7 @@ class Keyboard {
     // set parent for organization
     enter.parent(keyboard);
     let del = createButton("⌫");
+    del.style("color", "black");
     // on click pass ⌫ to game
     del.mouseClicked(() => hardleGame.keyPressed("⌫"));
     del.size(this.tileWidth * 2, this.tileHeight);

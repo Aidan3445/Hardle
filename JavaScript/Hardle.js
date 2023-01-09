@@ -7,7 +7,6 @@ class Hardle {
     this.secretWordIndex = floor(
       (new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000
     ); // index of the current secret word
-    this.wordLength = 5; // number of letters in the words
     this.tileSize = 40; // size of each tile
     this.totalGuesses = 9; // number if guesses you get;
     this.win = false; // did the player win
@@ -29,6 +28,7 @@ class Hardle {
 
   // additional setup buttons and screens
   board() {
+    new Keyboard(this);
     // if the game is over show the share button only
     if (this.win || this.guessCount == this.totalGuesses) {
       this.makeShareButton();
@@ -39,10 +39,50 @@ class Hardle {
         this.guesses[i].updateAll();
       }
       // make the keyboard, info, and reset buttons
-      new Keyboard(this);
       this.makeInfoButton();
       this.makeResetButton();
     }
+  }
+
+  // game play loop
+  play() {
+    // set the background
+    background("lightgray");
+    // if the game is over show the end screen
+    if (this.win || this.guessCount == this.totalGuesses) {
+      this.endScreen();
+    } else {
+      // otherwise draw the pegs and the tiles
+      for (let i = 0; i < this.totalGuesses; i++) {
+        this.guesses[i].draw();
+      }
+    }
+    this.storeData();
+  }
+
+  // create message for sharing scores
+  share() {
+    // start with the score
+    let copyPaste = this.score();
+    // list of emojis for the guess pegs
+    let emoji = ["⚪", "🟡", "🟢"];
+    // for each guess, get the pegs and convert them into strings
+    for (let n = 0; n < this.guessCount; n++) {
+      let guess = this.guesses[n];
+      let pegCounts = guess.getPegs();
+      let tempBoxes = "";
+      for (let i = 0; i < 3; i++) {
+        tempBoxes += emoji[i].repeat(pegCounts[i]);
+      }
+      // add each as a new line to the score message
+      copyPaste += "\r" + tempBoxes;
+    }
+    print(copyPaste);
+    copyPaste += "\rhttps://hardle.netlify.app/";
+    // copy to clipboard and create a popup
+    window.navigator.clipboard.writeText(copyPaste).then(function (x) {
+      window.alert(copyPaste + "\r\rCopy to clipboard.");
+    });
   }
 
   // return a string score of the game i.e "4/9"
@@ -64,32 +104,6 @@ class Hardle {
       str(this.totalGuesses);
     // return the string
     return score;
-  }
-
-  // create message for sharing scores
-  share() {
-    // start with the score
-    let copyPaste = this.score();
-    // list of emojis for the guess pegs
-    let emoji = ["⚪", "🟡", "🟢"];
-    // for each guess, get the pegs and convert them into strings
-    for (let n = 0; n < this.guessCount; n++) {
-      let guess = this.guesses[n];
-      let pegCounts = guess.getPegs();
-      let tempBoxes = "";
-      for (let i = 0; i < 3; i++) {
-        console.log(pegCounts);
-        tempBoxes += emoji[i].repeat(pegCounts[i]);
-      }
-      // add each as a new line to the score message
-      copyPaste += "\r" + tempBoxes;
-    }
-    print(copyPaste);
-    copyPaste += "\rhttps://hardle.netlify.app/";
-    // copy to clipboard and create a popup
-    window.navigator.clipboard.writeText(copyPaste).then(function (x) {
-      window.alert(copyPaste + "\r\rCopy to clipboard.");
-    });
   }
 
   // make the share button
@@ -160,7 +174,7 @@ class Hardle {
         // check for enter/return
       } else if (keyPressed == "Enter" || keyPressed == "ENTER") {
         // ensure valid guess before submitting
-        if (current.guessMade(this.wordLength, this.w.allWords)) {
+        if (current.guessMade(this.w.allWords)) {
           // increase guess count and store current game
           this.guessCount++;
           this.storeData();
@@ -318,20 +332,6 @@ class Hardle {
     return time;
   }
 
-  play() {
-    // set the background
-    background("lightgray");
-    // if the game is over show the end screen
-    if (this.win || this.guessCount == this.totalGuesses) {
-      this.endScreen();
-    } else {
-      // otherwise draw the pegs and the tiles
-      for (let i = 0; i < this.totalGuesses; i++) {
-        this.guesses[i].draw();
-      }
-    }
-  }
-
   // update the stored stats from previous days
   updateStats() {
     // represents the index in the score to store the number of guesses:
@@ -352,11 +352,14 @@ class Hardle {
 
   // store the data from the current game for reloading later
   storeData() {
+    let guesses = [];
+    for (let i = 0; i < this.totalGuesses; i++) {
+      guesses.push(this.guesses[i].toJSON());
+    }
     let hardle = {
       guessCount: this.guessCount,
-      guesses: aMap(this.guesses, WordGuess.toJSON),
+      guesses: guesses,
       secretWordIndex: this.secretWordIndex,
-      wordLength: this.wordLength,
       tileSize: this.tileSize,
       totalGuesses: this.totalGuesses,
       win: this.win,
@@ -370,12 +373,12 @@ class Hardle {
     let game = new Hardle(words);
     game.guessCount = json.guessCount;
     game.secretWordIndex = json.secretWordIndex;
-    game.wordLength = json.wordLength;
     game.tileSize = json.tileSize;
     game.totalGuesses = json.totalGuesses;
     game.win = json.win;
     game.guesses = aMap(json.guesses, WordGuess.fromJSON);
+    game.guesses[json.guessCount].clear();
     game.board();
-    return game;
+    return game;  
   }
 }

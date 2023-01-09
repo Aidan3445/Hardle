@@ -6,7 +6,6 @@ class Letter {
     this.x = x; // x coordinate within canvas
     this.y = y; // y coordinate within canvas
     this.size = size; // size of the tiles
-    this.clickable = false; // tiles start off unclickable
     this.create();
   }
 
@@ -29,15 +28,18 @@ class Letter {
 
   // update color
   clicked() {
-    if (this.clickable) {
-      this.color = (this.color + 1) % 4;
-      this.update(this.letterIndex);
-    }
+    this.setColor((this.color + 1) % 4);
+    this.update(this.letterIndex);
   }
 
-  // add color change on click
-  enable() {
-    this.clickable = true;
+  // get the color of the tile
+  getColor() {
+    return this.color;
+  }
+
+  // set the color of the tile
+  setColor(colorIndex) {
+    this.color = colorIndex;
   }
 
   // reset color to 0

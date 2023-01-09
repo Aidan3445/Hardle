@@ -34,6 +34,7 @@ class WordGuess {
     ) {
       let tile = this.tiles[this.word.length];
       tile.update(index);
+      tile.resetColor();
       this.word.push(letter);
     }
   }
@@ -50,6 +51,13 @@ class WordGuess {
     for (let i = 0; i < 5; i++) {
       this.tiles[i].resetColor();
     }
+  }
+
+  // clear the word
+  clear() {
+    this.word = []
+    this.tiles = []
+    this.setup();
   }
 
   // get the pegs for the current guess based on the secret word
@@ -85,15 +93,15 @@ class WordGuess {
   }
 
   // make a guess if the word is valid, otherwise alert that the word is invalid
-  guessMade(wordLength, allWords) {
+  guessMade(allWords) {
     // build word to string
     let string = this.word.join("");
     // is it the full word and is it in the word list
-    if (this.word.length == wordLength && allWords.indexOf(string) != -1) {
+    if (this.word.length == 5 && allWords.indexOf(string) != -1) {
       // make the guess
       this.guessed = true;
       this.updateAll();
-    } else if (this.word.length == wordLength) {
+    } else if (this.word.length == 5) {
       // popup for invalid word
       let invalid = createButton("Not in the word list.");
       invalid.position(120, 50);
@@ -118,13 +126,11 @@ class WordGuess {
       // update the tile to display the letter
       let tile = this.tiles[i];
       tile.update(index);
-      if (this.guessed) {
-        this.tiles[i].enable();
-      }
+      // change color of keyboard to indicate letter has been used
     }
     // update the pegs
-    let yellowGreen = this.getPegs();
-    this.pegs = new Pegs(yellowGreen[1], yellowGreen[2], this.guessed);
+    let pegCounts = this.getPegs();
+    this.pegs = new Pegs(pegCounts[1], pegCounts[2], this.guessed);
   }
 
   // draw the tiles and pegs
@@ -136,14 +142,19 @@ class WordGuess {
   }
 
   // convert guess object to json
-  static toJSON(obj) {
+  toJSON() {
+    let colors = [];
+    for (let i = 0; i < 5; i++) {
+      colors.push(this.tiles[i].getColor());
+    }
     let json = {
-      word: obj.word,
-      index: obj.index,
-      tileSize: obj.tileSize,
-      guessed: obj.guessed,
-      secretWord: obj.secretWord,
-      win: obj.win,
+      word: this.word,
+      index: this.index,
+      tileSize: this.tileSize,
+      guessed: this.guessed,
+      secretWord: this.secretWord,
+      win: this.win,
+      colors: colors,
     };
     return json;
   }
@@ -154,6 +165,9 @@ class WordGuess {
     let wg = new WordGuess(secretWord, json.index, json.tileSize, json.word);
     wg.guessed = json.guessed;
     wg.win = json.win;
+    for (let i = 0; i < 5; i++) {
+      wg.tiles[i].setColor(json.colors[i]);
+    }
     return wg;
   }
 }
