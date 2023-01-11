@@ -51,7 +51,17 @@ class Letter {
   // draw the tile on screen
   draw() {
     // get tile image from preloaded image list
-    let tileImage = letters[this.letterIndex * 4 + this.color];
-    image(tileImage, this.x, this.y, this.size, this.size);
+    let tileImage = letters[this.letterIndex];
+    image(
+      tileImage,
+      this.x,
+      this.y,
+      this.size,
+      this.size,
+      (this.color % 4) * 256, // crop based on color index
+      0,
+      256,
+      256
+    );
   }
 }

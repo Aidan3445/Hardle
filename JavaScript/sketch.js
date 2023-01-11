@@ -41,11 +41,7 @@ function preload() {
   words = new WordleWords();
   // load each letter in each color
   for (let i = 0; i < 27; i++) {
-    for (let sufx of ["l", "d", "y", "g"]) {
-      letters.push(
-        loadImage("images/tiles/" + alphabet[i] + "_" + sufx + ".png")
-      );
-    }
+    letters.push(loadImage("images/tiles/" + alphabet[i] + "_black.png"));
   }
 }
 
