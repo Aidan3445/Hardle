@@ -9,9 +9,9 @@ class Hardle {
     ); // index of the current secret word
     this.tileSize = 40; // size of each tile
     this.totalGuesses = 9; // number if guesses you get;
+    this.keyboard; //
     this.win = false; // did the player win
     this.setup();
-    this.board();
   }
 
   // fill in guess list with WordGuess objects
@@ -28,7 +28,7 @@ class Hardle {
 
   // additional setup buttons and screens
   board() {
-    new Keyboard(this);
+    this.keyboard = new Keyboard(this);
     // if the game is over show the share button only
     if (this.win || this.guessCount == this.totalGuesses) {
       this.makeShareButton();
@@ -36,11 +36,9 @@ class Hardle {
       // otherwise...
       // update all guesses to show the current game data
       for (let i = 0; i < this.guessCount; i++) {
-        this.guesses[i].updateAll();
+        this.guesses[i].build();
       }
-      // make the keyboard, info, and reset buttons
       this.makeInfoButton();
-      this.makeResetButton();
     }
   }
 
@@ -56,8 +54,58 @@ class Hardle {
       for (let i = 0; i < this.totalGuesses; i++) {
         this.guesses[i].draw();
       }
+      // draw keyboard
+      this.keyboard.draw();
     }
     this.storeData();
+  }
+
+  // takes physical and virtual keyboard inputs
+  keyPressed(keyPressed) {
+    // make sure the game is still live
+    if (this.guessCount < this.totalGuesses && !this.win) {
+      // get the current word
+      let current = this.guesses[this.guessCount];
+      // check for delete/backspace
+      if (keyPressed == "Backspace" || keyPressed == "⌫") {
+        current.deleteLetter();
+        // check for enter/return
+      } else if (keyPressed == "Enter" || keyPressed == "ENTER") {
+        // ensure valid guess before submitting
+        if (current.guessMade(this.w.allWords)) {
+          // increase guess count and store current game
+          this.guessCount++;
+          this.storeData();
+          // the game ends after the last guess or the correct guess
+          if (current.win || this.guessCount == this.totalGuesses) {
+            this.gameOver(current.win);
+          }
+        }
+      } else {
+        // pass on to current guess to determine which letter (if any) was pressed
+        current.addLetter(keyPressed.toUpperCase());
+      }
+    }
+  }
+
+  // get the colors of tiles that have been guessed
+  // colors are represented by an integer 0-3
+  getTileColors() {
+    let tileColors = {};
+    for (let i = 0; i < this.guessCount; i++) {
+      let indexGuess = this.guesses[i];
+      let guessColors = indexGuess.getColors();
+      for (let j = 0; j < 5; j++) {
+        let letter = indexGuess.word[j];
+        let tileColor = guessColors[j];
+        if (!(letter in tileColors)) {
+          tileColors[letter] = tileColor;
+        } else if (tileColor > tileColors[letter]) {
+          tileColors[letter] = tileColor;
+        }
+      }
+    }
+    return tileColors;
   }
 
   // create message for sharing scores
@@ -140,54 +188,11 @@ class Hardle {
   makeInfoButton() {
     let infoButton = createImg("/images/i.png", "");
     infoButton.size(30, 30);
-    infoButton.position(width * 0.06, 17);
+    infoButton.position(width * 0.835, 17);
     // when clicked show the tutorial image
     infoButton.mousePressed(() => this.showInfo());
     // set parent for relative position and scaling
     infoButton.parent("sketch");
-  }
-
-  // make a reset colors button
-  makeResetButton() {
-    let resetButton = createImg("/images/reset.png", "");
-    resetButton.size(60, 30);
-    resetButton.position(width * 0.835, 17);
-    // when clicked loop throuhgh guesses and reset colors
-    resetButton.mousePressed(() => {
-      for (let guess of this.guesses) {
-        guess.resetColors();
-      }
-    });
-    // set parent for relative position and scaling
-    resetButton.parent("sketch");
-  }
-
-  // takes physical and virtual keyboard inputs
-  keyPressed(keyPressed) {
-    // make sure the game is still live
-    if (this.guessCount < this.totalGuesses && !this.win) {
-      // get the current word
-      let current = this.guesses[this.guessCount];
-      // check for delete/backspace
-      if (keyPressed == "Backspace" || keyPressed == "⌫") {
-        current.deleteLetter();
-        // check for enter/return
-      } else if (keyPressed == "Enter" || keyPressed == "ENTER") {
-        // ensure valid guess before submitting
-        if (current.guessMade(this.w.allWords)) {
-          // increase guess count and store current game
-          this.guessCount++;
-          this.storeData();
-          // the game ends after the last guess or the correct guess
-          if (current.win || this.guessCount == this.totalGuesses) {
-            this.gameOver(current.win);
-          }
-        }
-      } else {
-        // pass on to current guess to determine which letter (if any) was pressed
-        current.addLetter(keyPressed.toUpperCase());
-      }
-    }
   }
 
   // end the game
@@ -378,7 +383,6 @@ class Hardle {
     game.win = json.win;
     game.guesses = aMap(json.guesses, WordGuess.fromJSON);
     game.guesses[json.guessCount].clear();
-    game.board();
-    return game;  
+    return game;
   }
 }

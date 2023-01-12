@@ -54,8 +54,8 @@ function setup() {
   let sketch = document.getElementById("sketch");
   let scaleVert = (document.documentElement.scrollHeight / 530) * 0.95;
   let scaleHori = (document.documentElement.scrollWidth / 400) * 0.95;
-  let scale = Math.min(scaleVert, scaleHori);
-  sketch.style.zoom = scale;
+  let sketchScale = Math.min(scaleVert, scaleHori);
+  sketch.style.zoom = sketchScale;
   // get current day of hardle
   let day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000);
   // load stats item from local browser storage
@@ -76,6 +76,7 @@ function setup() {
     // otherwise make a new one
     game = new Hardle(words);
   }
+  game.board();
 }
 
 // the game/draw loop from p5

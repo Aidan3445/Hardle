@@ -23,6 +23,16 @@ class WordGuess {
     }
   }
 
+  // update tiles and create reset guess button
+  build() {
+    this.updateAll();
+    let resetGuess = createElement("resetGuess", "↩️");
+    resetGuess.style('font-size', '20px');
+    resetGuess.position(width / 7.5, (this.index * this.tileSize * 11) / 10 + this.tileSize / 2);
+    resetGuess.mousePressed(() => this.resetColors());
+    resetGuess.parent("sketch");
+  }
+
   // add a letter to the guess
   addLetter(letter) {
     let index = alphabet.indexOf(letter);
@@ -55,8 +65,8 @@ class WordGuess {
 
   // clear the word
   clear() {
-    this.word = []
-    this.tiles = []
+    this.word = [];
+    this.tiles = [];
     this.setup();
   }
 
@@ -98,9 +108,9 @@ class WordGuess {
     let string = this.word.join("");
     // is it the full word and is it in the word list
     if (this.word.length == 5 && allWords.indexOf(string) != -1) {
-      // make the guess
+      // make the guess and add reset colors button
       this.guessed = true;
-      this.updateAll();
+      this.build();
     } else if (this.word.length == 5) {
       // popup for invalid word
       let invalid = createButton("Not in the word list.");
@@ -141,12 +151,18 @@ class WordGuess {
     this.pegs.draw(this.index, this.tileSize);
   }
 
-  // convert guess object to json
-  toJSON() {
+  // get the colors of the tiles for this guess toggled by the user
+  getColors() {
     let colors = [];
     for (let i = 0; i < 5; i++) {
       colors.push(this.tiles[i].getColor());
     }
+    return colors;
+  }
+
+  // convert guess object to json
+  toJSON() {
+    let colors = this.getColors();
     let json = {
       word: this.word,
       index: this.index,
