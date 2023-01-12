@@ -6,11 +6,15 @@ body.centered {
   align-items: center;
 }
 
-#sketch {
+#container {
   min-height: 100vh; /* mobile viewport bug fix */
   min-height: -webkit-fill-available;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+#sketch {
   position: relative;
 }

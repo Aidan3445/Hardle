@@ -42,7 +42,6 @@ class Keyboard {
       k.style("background-color", "transparent");
       // on click pass letter to game
       k.mouseClicked(() => this.hardleGame.keyPressed(l));
-
       k.size(this.tileWidth, this.tileHeight);
       k.position(
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 9.8),
@@ -99,7 +98,7 @@ class Keyboard {
     let darkgray = color(125, 125, 125);
     let yellow = color(255, 224, 71);
     let green = color(78, 153, 40);
-    let colors = [lightgray, darkgray, yellow, green]
+    let colors = [lightgray, darkgray, yellow, green];
     // get unique tile colors
     let tileColors = this.hardleGame.getTileColors();
     // console.log(tileColors);
