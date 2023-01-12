@@ -41,7 +41,7 @@ class Hardle {
       this.makeInfoButton();
 
       let mobileKeyboardPopup = createInput('');
-      mobileKeyboardPopup.hide();
+      // mobileKeyboardPopup.hide();
       mobileKeyboardPopup.id("mkp");
       document.getElementById("mkp").focus();
     }
