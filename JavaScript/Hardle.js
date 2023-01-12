@@ -39,10 +39,6 @@ class Hardle {
         this.guesses[i].build();
       }
       this.makeInfoButton();
-
-      let mobileKeyboardPopup = createInput('');
-      mobileKeyboardPopup.hide();
-      mobileKeyboardPopup.id("mkp");
       document.getElementById("mkp").focus();
     }
   }
