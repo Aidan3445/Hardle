@@ -30,6 +30,7 @@ class Letter {
   clicked() {
     this.setColor((this.color + 1) % 4);
     this.update(this.letterIndex);
+    document.getElementById("mkp").focus();
   }
 
   // get the color of the tile
