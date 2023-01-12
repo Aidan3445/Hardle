@@ -39,7 +39,6 @@ class Hardle {
         this.guesses[i].build();
       }
       this.makeInfoButton();
-      document.getElementById("mkp").focus();
     }
   }
 
