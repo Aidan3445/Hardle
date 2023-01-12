@@ -27,10 +27,10 @@ class WordGuess {
   build() {
     this.updateAll();
     let resetGuess = createElement("resetGuess", "↩️");
-    resetGuess.style("font-size", "20px");
+    resetGuess.style("font-size", str(this.tileSize) + "px");
     resetGuess.position(
-      width / 7.5,
-      (this.index * this.tileSize * 11) / 10 + this.tileSize / 2
+      width / 13,
+      (this.index * this.tileSize * 11) / 10 + this.tileSize / 5
     );
     resetGuess.mousePressed(() => this.resetColors());
     resetGuess.parent("sketch");
