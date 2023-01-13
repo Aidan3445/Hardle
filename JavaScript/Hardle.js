@@ -301,13 +301,19 @@ class Hardle {
   // draw rectangles corresponding to win guess-count history
   statsBars(scores) {
     // add up total games played
-    let total = scores.reduce((partialSum, a) => partialSum + a, 0);
+    let max = 0;
+    for (let i = 1; i < scores.length; i++) {
+      let score = scores[i]
+      if (score > max) {
+        max = score;
+      }
+    }
     push();
     rectMode(CORNER);
     fill("gray");
     stroke(0);
     // draw grey rectangles with proportional lengths
-    if (total != 0) {
+    if (max != 0) {
       for (let i = 1; i < scores.length; i++) {
         push();
         // color them green rather than gray for the current guess count
@@ -315,9 +321,9 @@ class Hardle {
           fill(119, 216, 71);
         }
         rect(
-          width / 4,
+          width / 4.1,
           height / 2.2 + (i - 1) * 18.75,
-          (width / 2) * (scores[i] / total),
+          (width / 2) * (scores[i] / max) + 5,
           10
         );
         pop();
