@@ -224,6 +224,7 @@ class Hardle {
     );
     // draw statistics using global stats variable (from sketch.js)
     this.stats(stats);
+    fill("black");
     textSize(20);
     // new hardle countdown
     text("NEXT HARDLE", width * 0.25, height * 0.82);
@@ -235,6 +236,7 @@ class Hardle {
 
   // show stats bars for overall score
   stats(statistics) {
+    push();
     // get guess count information from stats
     let scores = statistics.s;
     fill(0);
@@ -264,9 +266,14 @@ class Hardle {
     rect(width / 2, height / 1.65, width / 1.5, height / 3);
     pop();
     textSize(15);
-    text("1\n2\n3\n4\n5\n6\n7\n8\n9", width / 4.5, height / 1.65);
     text(
-      scores[1] +
+      "\n\n\n\n\n\n\n\n\n1\n2\n3\n4\n5\n6\n7\n8\n9",
+      width / 4.5,
+      height / 2.23
+    );
+    text(
+      "\n\n\n\n\n\n\n\n\n" +
+        scores[1] +
         "\n" +
         scores[2] +
         "\n" +
@@ -284,10 +291,11 @@ class Hardle {
         "\n" +
         scores[9],
       (width * 3.5) / 4.5,
-      height / 1.65
+      height / 2.23
     );
     // draw the stats bars
     this.statsBars(scores);
+    pop();
   }
 
   // draw rectangles corresponding to win guess-count history
