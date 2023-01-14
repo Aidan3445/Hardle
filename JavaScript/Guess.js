@@ -120,6 +120,10 @@ class WordGuess {
       let invalid = createButton("Not in the word list.");
       invalid.position(120, 50);
       invalid.style("font-size", "20");
+      invalid.style("color", "black");
+      invalid.style("background-color", "white");
+      invalid.style("border-radius", "5px");
+      invalid.style("border-style", "solid");
       invalid.size(150, 25);
       invalid.mousePressed(() => invalid.remove());
       // set parent for relative position and scaling
