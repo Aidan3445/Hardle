@@ -207,14 +207,10 @@ class Hardle {
     this.storeData();
     // update the stats
     this.updateStats();
-    // turn on draw loop for live counter and set framerate
-    loop();
-    frameRate(2);
   }
 
   // what to show on the end screen
   endScreen() {
-    push();
     // score text and word reveal
     noStroke();
     textAlign(CENTER, CENTER);
@@ -232,10 +228,9 @@ class Hardle {
     fill("black");
     textSize(20);
     // new hardle countdown
-    text("NEXT HARDLE", width * 0.25, height * 0.82);
-    textSize(40);
-    text(this.getTimer(), width * 0.25, height * 0.92);
     rect(width / 2, height * 0.875, 2, 85);
+    text("NEXT HARDLE", width * 0.25, height * 0.82);
+    this.addTimer();
     pop();
   }
 
@@ -308,7 +303,7 @@ class Hardle {
     // add up total games played
     let max = 0;
     for (let i = 1; i < scores.length; i++) {
-      let score = scores[i]
+      let score = scores[i];
       if (score > max) {
         max = score;
       }
@@ -338,14 +333,21 @@ class Hardle {
   }
 
   // get time until next hardle at midnight local time
-  getTimer() {
+  addTimer() {
+    // cover previous time
+    push();
+    fill("lightgray");
+    rect(width * 0.25, height * 0.92, 175, 40);
+    pop();
     let time =
       this.addZero(23 - hour()) +
       ":" +
       this.addZero(60 - minute()) +
       ":" +
       this.addZero(60 - second());
-    return time;
+    textSize(40);
+    text(time, width * 0.25, height * 0.92);
+    sleep(1000).then(() => this.addTimer());
   }
 
   // helper function for formatting the timer to 00:00:00 format
