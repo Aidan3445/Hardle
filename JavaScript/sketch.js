@@ -50,6 +50,7 @@ function setup() {
   // make the canvas and put in the sketch container
   cnv = createCanvas(400, 530);
   cnv.parent("sketch");
+  noLoop(); // turn off draw loop
   // scale the entire container to fill screen
   let sketch = document.getElementById("sketch");
   let scaleVert = (document.documentElement.scrollHeight / 530) * 0.95;
@@ -77,11 +78,6 @@ function setup() {
     game = new Hardle(words);
   }
   game.board();
-}
-
-// the game/draw loop from p5
-function draw() {
-  game.play();
 }
 
 // handle keyboard inputs via p5

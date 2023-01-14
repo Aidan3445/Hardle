@@ -23,6 +23,8 @@ class Keyboard {
       let k = createButton(l);
       k.style("color", "black");
       k.style("background-color", "transparent");
+      k.style("border-radius", "10px");
+      k.style("border-style", "solid");
       // on click pass letter to game
       k.mouseClicked(() => this.hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -40,6 +42,8 @@ class Keyboard {
       let k = createButton(l);
       k.style("color", "black");
       k.style("background-color", "transparent");
+      k.style("border-radius", "10px");
+      k.style( "border-style", "solid");
       // on click pass letter to game
       k.mouseClicked(() => this.hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -57,6 +61,8 @@ class Keyboard {
       let k = createButton(l);
       k.style("color", "black");
       k.style("background-color", "transparent");
+      k.style("border-radius", "10px");
+      k.style( "border-style", "solid");
       // on click pass letter to game
       k.mouseClicked(() => this.hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -72,6 +78,8 @@ class Keyboard {
     let enter = createButton("ENTER");
     enter.style("color", "black");
     enter.style("background-color", "rgb(185, 185, 185)");
+    enter.style("border-radius", "10px");
+    enter.style( "border-style", "solid");
     // on click pass ENTER to game
     enter.mouseClicked(() => this.hardleGame.keyPressed("ENTER"));
     enter.size(this.tileWidth * 2, this.tileHeight);
@@ -82,6 +90,8 @@ class Keyboard {
     let del = createButton("⌫");
     del.style("color", "black");
     del.style("background-color", "rgb(185, 185, 185)");
+    del.style("border-radius", "10px");
+    del.style( "border-style", "solid");
     // on click pass ⌫ to game
     del.mouseClicked(() => this.hardleGame.keyPressed("⌫"));
     del.size(this.tileWidth * 2, this.tileHeight);
@@ -103,6 +113,7 @@ class Keyboard {
     let tileColors = this.hardleGame.getTileColors();
     // console.log(tileColors);
     push();
+    noStroke();
     // draw top row
     for (let i = 0; i < this.qwerty.length; i++) {
       let l = this.qwerty[i];
@@ -115,7 +126,8 @@ class Keyboard {
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 17),
         410,
         this.tileWidth,
-        this.tileHeight
+        this.tileHeight,
+        10
       );
     }
     // draw middle row
@@ -130,7 +142,8 @@ class Keyboard {
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 9.8),
         450,
         this.tileWidth,
-        this.tileHeight
+        this.tileHeight,
+        10
       );
     }
     // draw bottom row
@@ -145,7 +158,8 @@ class Keyboard {
         width * ((0.8 / this.qwerty.length) * i + i / 100 + 1 / 5.2),
         490,
         this.tileWidth,
-        this.tileHeight
+        this.tileHeight,
+        10
       );
     }
     pop();

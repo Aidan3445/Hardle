@@ -40,10 +40,11 @@ class Hardle {
       }
       this.makeInfoButton();
     }
+    game.update();
   }
 
-  // game play loop
-  play() {
+  // update screen and save
+  update() {
     // set the background
     background("lightgray");
     // if the game is over show the end screen
@@ -85,6 +86,7 @@ class Hardle {
         // pass on to current guess to determine which letter (if any) was pressed
         current.addLetter(keyPressed.toUpperCase());
       }
+      this.update();
     }
   }
 
@@ -205,6 +207,9 @@ class Hardle {
     this.storeData();
     // update the stats
     this.updateStats();
+    // turn on draw loop for live counter and set framerate
+    loop();
+    frameRate(2);
   }
 
   // what to show on the end screen

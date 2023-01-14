@@ -64,6 +64,7 @@ class WordGuess {
     for (let i = 0; i < 5; i++) {
       this.tiles[i].resetColor();
     }
+    game.update();
   }
 
   // clear the word
