@@ -129,9 +129,21 @@ class Hardle {
     }
     print(copyPaste);
     copyPaste += "\rhttps://hardle.netlify.app/";
-    // copy to clipboard and create a popup
+    // copy to clipboard
     window.navigator.clipboard.writeText(copyPaste).then(function (x) {
-      window.alert(copyPaste + "\r\rCopy to clipboard.");
+      // popup to notify copy
+      let copied = createButton("Copied to clipboard.");
+      copied.position(120, 100);
+      copied.style("font-size", "20");
+      copied.style("color", "black");
+      copied.style("background-color", "white");
+      copied.style("border-radius", "5px");
+      copied.style("border-style", "solid");
+      copied.size(150, 25);
+      copied.mousePressed(() => copied.remove());
+      // set parent for relative position and scaling
+      copied.parent("sketch");
+      sleep(5000).then(() => copied.remove());
     });
   }
 
@@ -165,6 +177,8 @@ class Hardle {
     shareButton.style("font-size", "28px");
     shareButton.style("color", "black");
     shareButton.style("background-color", "rgb(119, 216, 71)");
+    shareButton.style("border-radius", "5px");
+    shareButton.style("border-style", "solid");
     shareButton.size(120, 40);
     shareButton.position(width * 0.6, height * 0.85);
     // when clicked copy and show the share message
@@ -231,7 +245,6 @@ class Hardle {
     rect(width / 2, height * 0.875, 2, 85);
     text("NEXT HARDLE", width * 0.25, height * 0.82);
     this.addTimer();
-    pop();
   }
 
   // show stats bars for overall score
@@ -301,7 +314,7 @@ class Hardle {
   // draw rectangles corresponding to win guess-count history
   statsBars(scores) {
     // add up total games played
-    let max = 0;
+    let max = 1;
     for (let i = 1; i < scores.length; i++) {
       let score = scores[i];
       if (score > max) {
@@ -313,21 +326,19 @@ class Hardle {
     fill("gray");
     stroke(0);
     // draw grey rectangles with proportional lengths
-    if (max != 0) {
-      for (let i = 1; i < scores.length; i++) {
-        push();
-        // color them green rather than gray for the current guess count
-        if (i == this.guessCount) {
-          fill(119, 216, 71);
-        }
-        rect(
-          width / 4.1,
-          height / 2.2 + (i - 1) * 18.75,
-          (width / 2) * (scores[i] / max) + 5,
-          10
-        );
-        pop();
+    for (let i = 1; i < scores.length; i++) {
+      push();
+      // color them green rather than gray for the current guess count
+      if (i == this.guessCount && this.win) { // && this.win
+        fill(119, 216, 71);
       }
+      rect(
+        width / 4.1,
+        height / 2.2 + (i - 1) * 18.75,
+        (width / 2) * (scores[i] / max) + 5,
+        10
+      );
+      pop();
     }
     pop();
   }
@@ -403,7 +414,9 @@ class Hardle {
     game.totalGuesses = json.totalGuesses;
     game.win = json.win;
     game.guesses = aMap(json.guesses, WordGuess.fromJSON);
-    game.guesses[json.guessCount].clear();
+    if (json.guessCount > 9) {
+      game.guesses[json.guessCount].clear();
+    }
     return game;
   }
 }

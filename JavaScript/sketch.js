@@ -50,7 +50,8 @@ function setup() {
   // make the canvas and put in the sketch container
   cnv = createCanvas(400, 530);
   cnv.parent("sketch");
-  noLoop(); // turn off draw loop
+  // turn off draw loop
+  noLoop();
   // scale the entire container to fill screen
   let sketch = document.getElementById("sketch");
   let scaleVert = (document.documentElement.scrollHeight / 530) * 0.95;
