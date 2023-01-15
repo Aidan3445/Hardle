@@ -414,7 +414,7 @@ class Hardle {
     game.totalGuesses = json.totalGuesses;
     game.win = json.win;
     game.guesses = aMap(json.guesses, WordGuess.fromJSON);
-    if (json.guessCount > 9) {
+    if (json.guessCount < 9) {
       game.guesses[json.guessCount].clear();
     }
     return game;

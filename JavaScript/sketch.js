@@ -74,11 +74,13 @@ function setup() {
   // if a game from today is found load it
   if (stored != null && stored.secretWordIndex == day) {
     game = Hardle.loadData(stored, words);
+    game.board();
   } else {
     // otherwise make a new one
     game = new Hardle(words);
+    game.board();
+    game.showInfo();
   }
-  game.board();
 }
 
 // handle keyboard inputs via p5
