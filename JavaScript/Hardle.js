@@ -127,7 +127,6 @@ class Hardle {
       // add each as a new line to the score message
       copyPaste += "\r" + tempBoxes;
     }
-    print(copyPaste);
     copyPaste += "\rhttps://hardle.netlify.app/";
     // copy to clipboard
     window.navigator.clipboard.writeText(copyPaste).then(function (x) {

@@ -51,18 +51,25 @@ class Letter {
 
   // draw the tile on screen
   draw() {
+    let lightgray = color(185, 185, 185);
+    let darkgray = color(125, 125, 125);
+    let yellow = color(255, 224, 71);
+    let green = color(120, 215, 70);
+    let colors = [lightgray, darkgray, yellow, green];
+    push();
+    if (this.letterIndex != 26) {
+      fill(colors[this.color]);
     // get tile image from preloaded image list
-    let tileImage = letters[this.letterIndex];
-    image(
-      tileImage,
-      this.x,
-      this.y,
-      this.size,
-      this.size,
-      (this.color % 4) * 256, // crop based on color index
-      0,
-      256,
-      256
-    );
+    rect(this.x, this.y, this.size, this.size);
+    fill(0);
+    textAlign(LEFT, TOP);
+    textStyle("bold");
+    textSize(40);
+    text(alphabet[this.letterIndex], this.x + 6, this.y);
+    } else {
+      fill(255);
+      rect(this.x, this.y, this.size, this.size);
+    }
+    pop();
   }
 }

@@ -104,10 +104,10 @@ class Keyboard {
   // draw colored rectangles underneath transparent buttons
   // color priorities: Green>Yellow>DarkGray>LightGray
   draw() {
-    let lightgray = color(185, 185, 185); // background is already lightgrey
+    let lightgray = color(185, 185, 185);
     let darkgray = color(125, 125, 125);
     let yellow = color(255, 224, 71);
-    let green = color(78, 153, 40);
+    let green = color(120, 215, 70);
     let colors = [lightgray, darkgray, yellow, green];
     // get unique tile colors
     let tileColors = this.hardleGame.getTileColors();

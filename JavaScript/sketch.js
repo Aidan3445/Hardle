@@ -40,9 +40,9 @@ let alphabet = [
 function preload() {
   words = new WordleWords();
   // load each letter in each color
-  for (let i = 0; i < 27; i++) {
-    letters.push(loadImage("images/tiles/" + alphabet[i] + "_black.png"));
-  }
+  // for (let i = 0; i < 27; i++) {
+  //   letters.push(loadImage("images/tiles/" + alphabet[i] + "_black.png"));
+  // }
 }
 
 // setup the game
