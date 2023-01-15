@@ -62,17 +62,15 @@ class Letter {
     rectMode(CENTER);
     if (this.letterIndex != 26) {
       fill(colors[this.color]);
-    // get tile image from preloaded image list
+    } else {
+      fill(255);
+    }
     rect(tileX, tileY, this.size, this.size);
     fill(0);
     textAlign(CENTER, CENTER);
     textStyle("bold");
     textSize(40);
     text(alphabet[this.letterIndex], tileX, tileY);
-    } else {
-      fill(255);
-      rect(tileX, tileY, this.size, this.size);
-    }
     pop();
   }
 }

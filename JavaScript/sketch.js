@@ -1,12 +1,11 @@
 let game; // global game object
 let words; // global words object
-let letters = []; // global list of all letter images
 let stats; // global stats object
 
 let cnv; // Canvas for local button placement
 
 let alphabet = [
-  // global list of letters and "-" to represent blank
+  // global list of letters and "" to represent blank
   "A",
   "B",
   "C",
@@ -33,16 +32,12 @@ let alphabet = [
   "X",
   "Y",
   "Z",
-  "_",
+  "",
 ];
 
 // get word lists and images
 function preload() {
   words = new WordleWords();
-  // load each letter in each color
-  // for (let i = 0; i < 27; i++) {
-  //   letters.push(loadImage("images/tiles/" + alphabet[i] + "_black.png"));
-  // }
 }
 
 // setup the game

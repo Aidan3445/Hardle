@@ -26,7 +26,7 @@ class WordGuess {
   // update tiles and create reset guess button
   build() {
     this.updateAll();
-    let resetGuess = createElement("reset", "↩️");
+    let resetGuess = createButton("↩️");
     resetGuess.style("font-size", str(this.tileSize) + "px");
     resetGuess.style("border-style", "none");
     resetGuess.style("background", "transparent");
@@ -34,6 +34,7 @@ class WordGuess {
       20,
       (this.index * this.tileSize * 11) / 10 + this.tileSize / 5
     );
+    resetGuess.size(this.size, this.size);
     resetGuess.mousePressed(() => this.resetColors());
     resetGuess.parent("sketch");
   }
