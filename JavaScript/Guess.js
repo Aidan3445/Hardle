@@ -31,7 +31,7 @@ class WordGuess {
     resetGuess.style("border-style", "none");
     resetGuess.style("background", "transparent");
     resetGuess.position(
-      width / 20,
+      20,
       (this.index * this.tileSize * 11) / 10 + this.tileSize / 5
     );
     resetGuess.mousePressed(() => this.resetColors());
