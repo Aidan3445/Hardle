@@ -56,19 +56,22 @@ class Letter {
     let yellow = color(255, 224, 71);
     let green = color(120, 215, 70);
     let colors = [lightgray, darkgray, yellow, green];
+    let tileX = this.x + this.size / 2;
+    let tileY = this.y + this.size / 2;
     push();
+    rectMode(CENTER);
     if (this.letterIndex != 26) {
       fill(colors[this.color]);
     // get tile image from preloaded image list
-    rect(this.x, this.y, this.size, this.size);
+    rect(tileX, tileY, this.size, this.size);
     fill(0);
-    textAlign(LEFT, TOP);
+    textAlign(CENTER, CENTER);
     textStyle("bold");
     textSize(40);
-    text(alphabet[this.letterIndex], this.x + 6, this.y);
+    text(alphabet[this.letterIndex], tileX, tileY);
     } else {
       fill(255);
-      rect(this.x, this.y, this.size, this.size);
+      rect(tileX, tileY, this.size, this.size);
     }
     pop();
   }
