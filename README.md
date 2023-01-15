@@ -8,3 +8,7 @@ Hardle follows the same basic rules of Wordle with one challenging twist. The "p
 The game can be played at https://hardle.netlify.app/
 
 Enjoy!
+
+ <img width="305" alt="Screenshot 2023-01-15 at 9 54 40 AM" src="https://user-images.githubusercontent.com/102766475/212548412-5999204e-af6b-4c72-96b1-bdd1fe7e8b69.png"> <img width="300" alt="Screenshot 2023-01-15 at 9 50 41 AM" src="https://user-images.githubusercontent.com/102766475/212548211-663d16f4-05a9-4093-91f6-ba0ff07d5d15.png"> <img width="291" alt="Screenshot 2023-01-15 at 9 47 42 AM" src="https://user-images.githubusercontent.com/102766475/212548267-7083e4a9-ee90-476b-9739-bc3bbbbd13f8.png">
+
+
