@@ -14,6 +14,7 @@ class Letter {
     let tile = createDiv("");
     tile.size(this.size, this.size);
     tile.position(this.x, this.y);
+    tile.style("cursor", "pointer");
     // when clicked pass to click function for color changing
     tile.mouseClicked(() => this.clicked());
     // set parent for relative position and scaling

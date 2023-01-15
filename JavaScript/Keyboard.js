@@ -25,6 +25,7 @@ class Keyboard {
       k.style("background-color", "transparent");
       k.style("border-radius", "10px");
       k.style("border-style", "solid");
+      k.style("cursor", "pointer");
       // on click pass letter to game
       k.mouseClicked(() => this.hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -44,6 +45,7 @@ class Keyboard {
       k.style("background-color", "transparent");
       k.style("border-radius", "10px");
       k.style( "border-style", "solid");
+      k.style("cursor", "pointer");
       // on click pass letter to game
       k.mouseClicked(() => this.hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -63,6 +65,7 @@ class Keyboard {
       k.style("background-color", "transparent");
       k.style("border-radius", "10px");
       k.style( "border-style", "solid");
+      k.style("cursor", "pointer");
       // on click pass letter to game
       k.mouseClicked(() => this.hardleGame.keyPressed(l));
       k.size(this.tileWidth, this.tileHeight);
@@ -80,6 +83,7 @@ class Keyboard {
     enter.style("background-color", "rgb(185, 185, 185)");
     enter.style("border-radius", "10px");
     enter.style( "border-style", "solid");
+    enter.style("cursor", "pointer");
     // on click pass ENTER to game
     enter.mouseClicked(() => this.hardleGame.keyPressed("ENTER"));
     enter.size(this.tileWidth * 2, this.tileHeight);
@@ -92,6 +96,7 @@ class Keyboard {
     del.style("background-color", "rgb(185, 185, 185)");
     del.style("border-radius", "10px");
     del.style( "border-style", "solid");
+    del.style("cursor", "pointer");
     // on click pass ⌫ to game
     del.mouseClicked(() => this.hardleGame.keyPressed("⌫"));
     del.size(this.tileWidth * 2, this.tileHeight);

@@ -178,6 +178,7 @@ class Hardle {
     shareButton.style("background-color", "rgb(119, 216, 71)");
     shareButton.style("border-radius", "5px");
     shareButton.style("border-style", "solid");
+    shareButton.style("cursor", "pointer");
     shareButton.size(120, 40);
     shareButton.position(width * 0.6, height * 0.85);
     // when clicked copy and show the share message
@@ -204,6 +205,7 @@ class Hardle {
     let infoButton = createImg("/images/i.png", "");
     infoButton.size(30, 30);
     infoButton.position(width * 0.835, 17);
+    infoButton.style("cursor", "pointer");
     // when clicked show the tutorial image
     infoButton.mousePressed(() => this.showInfo());
     // set parent for relative position and scaling
