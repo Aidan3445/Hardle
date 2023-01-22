@@ -54,7 +54,7 @@ function setup() {
   let sketchScale = Math.min(scaleVert, scaleHori);
   sketch.style.zoom = sketchScale;
   // get current day of hardle
-  let day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000);
+  let day = floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000) % words.secretWords.length;
   // load stats item from local browser storage
   stats = getItem("stats");
   if (stats == null) {

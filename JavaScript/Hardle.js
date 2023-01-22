@@ -238,7 +238,7 @@ class Hardle {
     textLeading(40);
     text("\n" + this.score() + ":\n" + secretWord, width / 2, height / 20);
     pop();
-    this.getDefinition("pneumonoultramicroscopicsilicovolcanoconiosis");
+    this.getDefinition(secretWord);
     // draw statistics using global stats variable (from sketch.js)
     this.stats(stats);
     push();
@@ -256,9 +256,9 @@ class Hardle {
     return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data) {
-          // get first definition from JSON
-          let definition = data[0].meanings[0].definitions[0].definition;
+        // get first definition from JSON
+        let definition = data[0].meanings[0].definitions[0].definition;
+        if (definition) {
           let partOfSpeech = data[0].meanings[0].partOfSpeech;
           let definitionText = `Definition: ${partOfSpeech} - ${definition}`;
           // draw text with wrapped lines
@@ -291,7 +291,7 @@ class Hardle {
       2,
       2
     );
-    text(`Win% ${winPct}`, 2 * width / 3, height / 3.5, 0, 55.5);
+    text(`Win% ${winPct}`, (2 * width) / 3, height / 3.5, 0, 55.5);
     // stats bar text for history of number of guesses taken
     pop();
     textSize(15);
