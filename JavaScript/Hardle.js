@@ -180,7 +180,7 @@ class Hardle {
     shareButton.style("border-style", "solid");
     shareButton.style("cursor", "pointer");
     shareButton.size(120, 40);
-    shareButton.position(width * 0.6, height * 0.85);
+    shareButton.position(width * 0.56, height * 0.84);
     // when clicked copy and show the share message
     shareButton.mouseClicked(() => this.share());
     // set parent for relative position and scaling
@@ -281,20 +281,19 @@ class Hardle {
     // show basic games played and win/loss information
     fill(0);
     textSize(25);
-    text("Played        Win %", width / 2, height / 3);
+    push();
+    rectMode(RADIUS);
     let total = scores.reduce((partialSum, a) => partialSum + a, 0);
-    text(total, width / 3, height / 2.6);
-    text(
-      nf(
-        (scores.reduce((partialSum, a) => partialSum + a, -scores[0]) / total) *
-          100,
-        2,
-        2
-      ),
-      (width * 2) / 3,
-      height / 2.6
+    text(`Played ${total}`, width / 3, height / 3.5, 0, 55.5);
+    let winPct = nf(
+      (scores.reduce((partialSum, a) => partialSum + a, -scores[0]) / total) *
+        100,
+      2,
+      2
     );
+    text(`Win% ${winPct}`, 2 * width / 3, height / 3.5, 0, 55.5);
     // stats bar text for history of number of guesses taken
+    pop();
     textSize(15);
     text("Guesses", width / 2, height / 2.4);
     push();
