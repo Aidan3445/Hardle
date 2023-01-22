@@ -230,22 +230,47 @@ class Hardle {
     noStroke();
     textAlign(CENTER, CENTER);
     rectMode(CENTER);
+    let secretWord = this.w.secretWords[this.secretWordIndex];
+    push();
     textStyle("bold");
     fill("green");
     textSize(40);
-    text(
-      this.score() + ":\n" + this.w.secretWords[this.secretWordIndex],
-      width / 2,
-      50
-    );
+    textLeading(40);
+    text("\n" + this.score() + ":\n" + secretWord, width / 2, height / 20);
+    pop();
+    this.getDefinition("pneumonoultramicroscopicsilicovolcanoconiosis");
     // draw statistics using global stats variable (from sketch.js)
     this.stats(stats);
+    push();
     fill("black");
     textSize(20);
     // new hardle countdown
     rect(width / 2, height * 0.875, 2, 85);
     text("NEXT HARDLE", width * 0.25, height * 0.82);
+    pop();
     this.addTimer();
+  }
+
+  // get definition from https://dictionaryapi.dev/ API
+  getDefinition(word) {
+    return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          // get first definition from JSON
+          let definition = data[0].meanings[0].definitions[0].definition;
+          let partOfSpeech = data[0].meanings[0].partOfSpeech;
+          let definitionText = `Definition: ${partOfSpeech} - ${definition}`;
+          // draw text with wrapped lines
+          push();
+          textAlign(CENTER, TOP);
+          rectMode(RADIUS);
+          fill(50, 50, 50);
+          textSize(11);
+          text(definitionText, 0, height / 6, width, height);
+          pop();
+        }
+      });
   }
 
   // show stats bars for overall score
@@ -253,14 +278,12 @@ class Hardle {
     push();
     // get guess count information from stats
     let scores = statistics.s;
-    fill(0);
-    textSize(20);
     // show basic games played and win/loss information
-    text("Stats:", width / 2, height / 4.5);
+    fill(0);
     textSize(25);
-    text("Played        Win %", width / 2, height / 3.5);
+    text("Played        Win %", width / 2, height / 3);
     let total = scores.reduce((partialSum, a) => partialSum + a, 0);
-    text(total, width / 3, height / 2.8);
+    text(total, width / 3, height / 2.6);
     text(
       nf(
         (scores.reduce((partialSum, a) => partialSum + a, -scores[0]) / total) *
@@ -269,10 +292,10 @@ class Hardle {
         2
       ),
       (width * 2) / 3,
-      height / 2.8
+      height / 2.6
     );
     // stats bar text for history of number of guesses taken
-    textSize(20);
+    textSize(15);
     text("Guesses", width / 2, height / 2.4);
     push();
     fill(255);
@@ -330,7 +353,8 @@ class Hardle {
     for (let i = 1; i < scores.length; i++) {
       push();
       // color them green rather than gray for the current guess count
-      if (i == this.guessCount && this.win) { // && this.win
+      if (i == this.guessCount && this.win) {
+        // && this.win
         fill(119, 216, 71);
       }
       rect(
