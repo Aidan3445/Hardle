@@ -1,7 +1,7 @@
 # Hardle
 Hardle brings the original Wordle back to its Mastermind roots.
 
-The original version of Hardle was made in Java using a library from my CS Fundies 2 course at Northeastern University. I recreated the game in the p5js. There were several limitations with p5, mainly the slow performance on mobile devices. I eventually learned the React framework to recreate the final (for now) version of the game.
+The original version of Hardle was made in Java using a library from my CS Fundies 2 course at Northeastern University. I recreated the game in the p5js. There were several limitations with p5, mainly the slow performance on mobile devices. I eventually learned the React framework to develop the final (for now) version of the game.
 
 Hardle follows the same basic rules as Wordle with one challenging twist. The "pegs" to the right of your guesses indicate how many yellow and green letters there are, but not which letter they correspond to.
 
