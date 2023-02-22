@@ -1,0 +1,93 @@
+/* NAVBAR */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  gap: 10px;
+  background-color: #b9b9b9;
+}
+
+.nav--colormode {
+  padding: 10px;
+  height: 80%;
+}
+
+.nav--hardle {
+  color: green;
+  font-size: 3em;  
+}
+
+.nav--colormode {
+  height: 100%;
+}
+
+/* INFO */
+.info--button {
+  padding: 10px;
+  height: 100%;
+}
+
+/* GUESSES */
+.guesses {
+  height: 10%;
+}
+
+.guess {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.guess--reset {
+  padding: 10px;
+  opacity: 0.5;
+}
+
+.guess--tiles {
+  display: flex;
+  gap: 5px;
+}
+
+.tile {
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.tile, .guess--reset {
+  cursor: pointer;
+  height: 70px;
+  width: 70px;
+}
+
+/* KEYBOARD */
+.keyboard {
+  display: grid;
+  grid-row: 3;
+  justify-content: center;
+}
+
+.keyboard--line {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.keyboard--key {
+  color: black;
+  background-color: #b9b9b9;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  width: 50px;
+  height: 52px;
+  font-size: 2em;
+}
