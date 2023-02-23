@@ -17,7 +17,7 @@ nav {
 
 .nav--hardle {
   color: green;
-  font-size: 3em;  
+  font-size: 3em;
 }
 
 .nav--colormode {
@@ -58,13 +58,31 @@ nav {
   border-style: solid;
   border-color: black;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3.5rem;
 }
 
-.tile, .guess--reset {
+.tile,
+.guess--reset {
   cursor: pointer;
   height: 70px;
   width: 70px;
+}
+
+/* GUESS PEGS */
+
+.pegs {
+  margin-bottom: 20px;
+}
+
+.pegs--peg {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  background: rgb(120, 215, 70);
+  position: absolute;
 }
 
 /* KEYBOARD */
@@ -83,7 +101,6 @@ nav {
 
 .keyboard--key {
   color: black;
-  background-color: #b9b9b9;
   border-radius: 10px;
   border-width: 3px;
   border-style: solid;

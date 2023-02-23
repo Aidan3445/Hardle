@@ -4,7 +4,7 @@ class WordGuess {
     this.word = word; // list of charaters/string-letters in the guess
     this.index = index; // number of the guess
     this.guessed = false; // has the word been guessed or is it being played currently
-    this.secretWord = wordleWord.split(""); //  list of charaters/string-letters in the secret word
+    // this.secretWord = wordleWord.split(""); //  list of charaters/string-letters in the secret word
     this.pegs = new Pegs(0, 0); // pegs start off as blank
     this.win = false; // has the game been won?
     this.tiles = []; // list of letter tiles to display

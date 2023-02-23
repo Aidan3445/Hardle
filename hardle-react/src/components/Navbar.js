@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Info from "./Info";
 
 export default function Navbar() {
@@ -10,7 +10,9 @@ export default function Navbar() {
 
   return (
     <nav>
-      <button className="nav--colormode" onClick={toggleDarkMode}>{darkMode ? "Dark Mode" : "Light Mode"}</button>
+      {/* <button className="nav--colormode" onClick={toggleDarkMode}>
+        {darkMode ? "Dark Mode" : "Light Mode"}
+      </button> */}
       <h1 className="nav--hardle">HARDLE</h1>
       <Info />
     </nav>
