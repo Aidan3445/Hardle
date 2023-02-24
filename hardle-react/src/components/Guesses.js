@@ -1,22 +1,28 @@
 import { useState } from "react";
-import {
-  white,
-  tileColors,
-} from "../App.js";
+import { white, colors } from "../App.js";
 
 import Trash from "../images/trash.png";
 
 // component for all guesses
 // props: array with guesses in the game
 export default function Guesses(props) {
-  const { guesses } = props;
+  const { guesses, colorsState, setColorsState } = props;
+  guesses[0].setWord("SLEEP");
 
   return (
     <div className="guesses">
       {guesses.map((guess, index) => {
         var word = guess.word;
         word = [...word, ...Array(5 - word.length).fill("")];
-        return <Guess word={word} pegs={guess.pegs} key={index} />;
+        return (
+          <Guess
+            word={word}
+            pegs={guess.pegs}
+            colorsState={colorsState}
+            setColorsState={setColorsState}
+            key={index}
+          />
+        );
       })}
     </div>
   );
@@ -25,14 +31,19 @@ export default function Guesses(props) {
 // component for a single guess: reset button, tiles, and pegs
 // props: array with charaters in the guess, pegs for the guess's colors
 function Guess(props) {
-  const { word, pegs } = props;
+  const { word, pegs, colorsState, setColorsState } = props;
 
   return (
     <div className="guess">
       <img className="guess--reset" src={Trash} alt="reset" />
       <div className="guess--tiles">
         {word.map((letter, index) => (
-          <Tile key={index} letter={letter} />
+          <Tile
+            key={index}
+            letter={letter}
+            tileColors={colorsState}
+            setTileColors={setColorsState}
+          />
         ))}
       </div>
       <div style={{ width: "70px" }}>
@@ -45,20 +56,30 @@ function Guess(props) {
 // component for a single letter tile
 // props: letter on the tile
 function Tile(props) {
-  const { letter } = props;
-
-  const [tileColor, setTileColor] = useState(0);
+  const { letter, tileColors, setTileColors } = props;
 
   // update color index
   function nextColor() {
-    setTileColor((prevTileColor) => (prevTileColor + 1) % 4);
+    setSingleTileColor((prevColor) => {
+      var newColor = (prevColor + 1) % 4;
+
+      if (newColor > tileColors[letter]) {
+        setTileColors((prevTileColors) => {
+          return { ...prevTileColors, [letter]: newColor };
+        });
+      }
+
+      return newColor;
+    });
   }
+
+  const [singleTileColor, setSingleTileColor] = useState(tileColors[letter]);
 
   return (
     <button
       className="tile"
       onClick={nextColor}
-      style={{ backgroundColor: letter ? tileColors[tileColor] : white }}
+      style={{ backgroundColor: letter ? colors[singleTileColor] : white }}
     >
       {letter}
     </button>

@@ -12,9 +12,9 @@ export default function App(props) {
 
   const [gameOver, setGameOver] = useState(hardle.gameOver);
 
-  var defaultColors = {}
-  alphabet.map((letter) => letter ? defaultColors[letter] = 0 : null);
-  const [tileColors, setTileColors] = useState(defaultColors);
+  var defaultColors = {};
+  alphabet.map((letter) => (letter ? (defaultColors[letter] = 0) : null));
+  const [colorsState, setColorsState] = useState(defaultColors);
 
   return (
     <div className="app">
@@ -23,8 +23,12 @@ export default function App(props) {
       ) : (
         <div>
           <Navbar />
-          <Guesses guesses={hardle.guesses} tileColors={tileColors} setTileColors={setTileColors}/>
-          <Keyboard game={hardle} tileColors={tileColors}/>
+          <Guesses
+            guesses={hardle.guesses}
+            colorsState={colorsState}
+            setColorsState={setColorsState}
+          />
+          <Keyboard game={hardle} tileColors={colorsState} />
         </div>
       )}
     </div>
@@ -37,7 +41,7 @@ var darkgray = "rgb(125, 125, 125)";
 var yellow = "rgb(255, 224, 71)";
 var green = "rgb(120, 215, 70)";
 var white = "rgb(255, 255, 255)";
-var tileColors = [lightgray, darkgray, yellow, green];
+var colors = [lightgray, darkgray, yellow, green];
 
 let alphabet = [
   // global list of letters and "" to represent blank
@@ -70,4 +74,4 @@ let alphabet = [
   "",
 ];
 
-export { lightgray, darkgray, yellow, green, white, tileColors, alphabet };
+export { lightgray, darkgray, yellow, green, white, colors, alphabet };

@@ -10,7 +10,9 @@ export default class Hardle {
     // word lists
     this.words = null;
     // guessed words
-    this.guesses = [...Array(9).fill(new WordGuess())];
+    this.guesses = [...Array(9)].map((x) => new WordGuess());
+
+
     // guesses[guessCount] is the current word
     this.guessCount = 0;
     // is the game over
