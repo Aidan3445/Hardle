@@ -45,7 +45,6 @@ nav {
 
 .guess--reset {
   padding: 10px;
-  opacity: 0.5;
 }
 
 .guess--tiles {
@@ -114,5 +113,4 @@ nav {
 .wide-key {
   width: 75px;
   background-color: rgb(185, 185, 185);
-  margin-top: 5px;
 }

@@ -1,5 +1,4 @@
-import { alphabet } from "../App.js";
-import HardleWords from "../data/HardleWords.js";
+import HardleWords from "../data/HardleWords.json";
 import PegData from "./PegData.js";
 
 var { allWords } = HardleWords;
@@ -8,26 +7,21 @@ var { allWords } = HardleWords;
 export default class WordGuess {
   constructor() {
     // array with charaters in the guess
-    this.word = [];
+    this.word = "";
     // array for the colors of each tile in the guess
     this.tileColors = [];
     // pegs for the guess's colors
     this.pegs = new PegData();
   }
 
-  // reduce list of letters to single string
-  // returns string
-  toString() {
-    return this.word.reduce((acc, curr) => acc + curr, "");
-  }
-
   // add a letter to the guess
   // returns this WordGuess object
   addLetter(letter) {
-    let index = alphabet.indexOf(letter);
-    if (this.word.length < 5 && index !== -1) {
-      this.word.push(letter);
+    if (this.word.length < 5 && letter.match(/^[a-zA-Z]$/)) {
+      this.word = this.word + letter;
       this.tileColors.push(0);
+    } else {
+      console.log("done");
     }
     return this;
   }
@@ -35,7 +29,7 @@ export default class WordGuess {
   // delete last letter from the guess
   // returns this WordGuess object
   deleteLetter() {
-    this.word.pop();
+    this.word.slice(0, this.word.length - 1);
     this.tileColors.pop();
     return this;
   }
@@ -43,21 +37,21 @@ export default class WordGuess {
   // set the full word
   // returns this WordGuess object
   setWord(word) {
-    this.word = [...word];
+    this.word = word;
     return this;
   }
 
   // is this guess a valid 5 letter word
   // returns bool
   tryGuess() {
-    return this.word.length === 5 && allWords.indexOf(this.toString()) > -1;
+    return this.word.length === 5 && allWords.includes(this.word);
   }
 
   // fill the pegs based closeness to the secret word
   setPegs(secretWord) {
     let yellow = 0; // number of yellow pegs
     let green = 0; // number of green pegs
-    let guess = this.word.slice(); // copy the guess made
+    let guess = this.word.split(''); // copy the guess made
     let s = [...secretWord] // copy the secret word to an array
 
     // check for correct/green letters first

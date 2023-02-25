@@ -1,24 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { observer, useLocalObservable } from "mobx-react-lite";
 import "./App.css";
 
+import puzzleStore from "./store/puzzleStore.js";
+
 import Navbar from "./components/Navbar.js";
-import Game from "./components/Game.js";
-import Stats from "./components/Stats.js";
+import Guess from "./components/Guess.js";
+import Keyboard from "./components/Keyboard.js";
+// import Stats from "./components/Stats.js";
 
 // main app component
-export default function App(props) {
-  const { hardle } = props;
+export default observer(function App() {
+  const store = useLocalObservable(() => puzzleStore);
 
-  const [showStats, toggleStats] = useState(false);
+  // const [game, updateGame] = useState(hardle);
+
+  useEffect(() => {
+    window.addEventListener("keyup", handleKeyup);
+    store.init();
+
+    return () => window.removeEventListener("keyup", handleKeyup);
+  }, []);
+
+  function handleKeyup(e) {
+    store.keyPressed(e.key);
+  }
+
+  // const [showStats, toggleStats] = useState(false);
 
   return (
     <div className="app">
       <Navbar />
-      <Game hardle={hardle} />
-      {showStats && <Stats />}
+      {store.guesses.map((guess, index) => (
+        <Guess
+          store={store}
+          secretWord={store.secretWord}
+          guess={guess}
+          tileColors={store.tileColors[index]}
+          isGuessed={store.guessCount > index}
+          wordIndex={index}
+          key={index}
+        />
+      ))}
+      <Keyboard />
+      {/* {showStats && <Stats />} */}
     </div>
   );
-}
+});
 
 // color scheme
 var lightgray = "rgb(185, 185, 185)";
@@ -28,35 +56,4 @@ var green = "rgb(120, 215, 70)";
 var white = "rgb(255, 255, 255)";
 var colors = [lightgray, darkgray, yellow, green];
 
-let alphabet = [
-  // global list of letters and "" to represent blank
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-  "",
-];
-
-export { lightgray, darkgray, yellow, green, white, colors, alphabet };
+export { lightgray, darkgray, yellow, green, white, colors };
