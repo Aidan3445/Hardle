@@ -6,20 +6,20 @@ import Trash from "../images/trash.png";
 // component for all guesses
 // props: array with guesses in the game
 export default function Guesses(props) {
-  const { guesses, colorsState, setColorsState } = props;
-  guesses[0].setWord("SLEEP");
+  const { game, updateGame } = props;
 
   return (
     <div className="guesses">
-      {guesses.map((guess, index) => {
+      {game.guesses.map((guess, index) => {
         var word = guess.word;
         word = [...word, ...Array(5 - word.length).fill("")];
         return (
           <Guess
+            game={game}
+            updateGame={updateGame}
             word={word}
             pegs={guess.pegs}
-            colorsState={colorsState}
-            setColorsState={setColorsState}
+            wordIndex={index}
             key={index}
           />
         );
@@ -31,7 +31,7 @@ export default function Guesses(props) {
 // component for a single guess: reset button, tiles, and pegs
 // props: array with charaters in the guess, pegs for the guess's colors
 function Guess(props) {
-  const { word, pegs, colorsState, setColorsState } = props;
+  const { game, updateGame, word, pegs, wordIndex } = props;
 
   return (
     <div className="guess">
@@ -39,10 +39,12 @@ function Guess(props) {
       <div className="guess--tiles">
         {word.map((letter, index) => (
           <Tile
-            key={index}
+            game={game}
+            updateGame={updateGame}
             letter={letter}
-            tileColors={colorsState}
-            setTileColors={setColorsState}
+            wordIndex={wordIndex}
+            letterIndex={index}
+            key={index}
           />
         ))}
       </div>
@@ -56,24 +58,26 @@ function Guess(props) {
 // component for a single letter tile
 // props: letter on the tile
 function Tile(props) {
-  const { letter, tileColors, setTileColors } = props;
+  const { game, updateGame, letter, wordIndex, letterIndex } = props;
+
+  const [singleTileColor, setSingleTileColor] = useState(
+    game.guesses[wordIndex].tileColors[letterIndex]
+  );
 
   // update color index
   function nextColor() {
-    setSingleTileColor((prevColor) => {
-      var newColor = (prevColor + 1) % 4;
+    // blank tiles are not colorable
+    if (letter === "") {
+      return;
+    }
 
-      if (newColor > tileColors[letter]) {
-        setTileColors((prevTileColors) => {
-          return { ...prevTileColors, [letter]: newColor };
-        });
-      }
+    // update local tile color
+    var newColor = (singleTileColor + 1) % 4;
+    setSingleTileColor(() => newColor);
 
-      return newColor;
-    });
+    // update state of tile colors for keyboard
+    updateGame();
   }
-
-  const [singleTileColor, setSingleTileColor] = useState(tileColors[letter]);
 
   return (
     <button

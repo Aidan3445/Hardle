@@ -2,35 +2,20 @@ import { useState } from "react";
 import "./App.css";
 
 import Navbar from "./components/Navbar.js";
-import Guesses from "./components/Guesses.js";
-import Keyboard from "./components/Keyboard.js";
+import Game from "./components/Game.js";
 import Stats from "./components/Stats.js";
 
 // main app component
 export default function App(props) {
   const { hardle } = props;
 
-  const [gameOver, setGameOver] = useState(hardle.gameOver);
-
-  var defaultColors = {};
-  alphabet.map((letter) => (letter ? (defaultColors[letter] = 0) : null));
-  const [colorsState, setColorsState] = useState(defaultColors);
+  const [showStats, toggleStats] = useState(false);
 
   return (
     <div className="app">
-      {gameOver ? (
-        <Stats />
-      ) : (
-        <div>
-          <Navbar />
-          <Guesses
-            guesses={hardle.guesses}
-            colorsState={colorsState}
-            setColorsState={setColorsState}
-          />
-          <Keyboard game={hardle} tileColors={colorsState} />
-        </div>
-      )}
+      <Navbar />
+      <Game hardle={hardle} />
+      {showStats && <Stats />}
     </div>
   );
 }
