@@ -19,8 +19,6 @@ export default {
     this.guesses = [...Array(9).fill("")];
     this.tileColors = [...Array(9).fill([])];
     this.guessCount = 0;
-
-    console.log(this.secretWord);
   },
 
   // was the game won
@@ -86,6 +84,22 @@ export default {
   // does a word have any colored tiles
   // returns bool‰
   isWordColored(wordIndex) {
-    return this.tileColors[wordIndex].reduce((acc, val) => acc || val !== 0, false);
+    return this.tileColors[wordIndex].reduce(
+      (acc, val) => acc || val !== 0,
+      false
+    );
+  },
+
+  // get the color to set a key
+  // returns color index 0-3
+  getKeyColor(letter) {
+    var maxColor = 0;
+    this.guesses.forEach((word, wordIndex) => {
+      var letterIndex = word.indexOf(letter.toUpperCase());
+      if (letterIndex >= 0) {
+        maxColor = Math.max(maxColor, this.tileColors[wordIndex][letterIndex]);
+      }
+    });
+    return maxColor;
   },
 };

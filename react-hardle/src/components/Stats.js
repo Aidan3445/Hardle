@@ -1,3 +1,5 @@
 export default function Stats() {
-    return <h1>STATS</h1>;
+    return <div className="stats">
+        <h1>STATS</h1>
+    </div>;
 }

@@ -1,5 +1,4 @@
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
 import { darkgray, yellow, green, white, colors } from "../App.js";
 
 import Trash from "../images/trash.png";

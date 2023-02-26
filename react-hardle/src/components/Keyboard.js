@@ -1,17 +1,11 @@
+import { observer } from "mobx-react-lite";
 import { colors } from "../App.js";
 
 const qwerty = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 
 // Keyboard component
-export default function Keyboard(props) {
-  const { game, updateGame } = props;
-
-  // pass key input to hardle game
-  function gameInput(input) {
-    updateGame((prevGame) => {
-      return prevGame.keyPressed(input);
-    });
-  }
+export default observer(function Keyboard(props) {
+  const { store } = props;
 
   // Keyboard component result
   return (
@@ -21,28 +15,31 @@ export default function Keyboard(props) {
           {lineNumber === 2 && (
             <button
               className="keyboard--key wide-key"
-              // onClick={deleteLetter}
+              onClick={() => store.keyPressed("Enter")}
             >
-              {"\u232B"}
+              {"\u21B5"}
             </button>
           )}
           {line.split("").map((key) => (
             <button
               className="keyboard--key"
-              // onClick={keyClicked}
-              // style={{ backgroundColor: getColor() }}
+              onClick={() => store.keyPressed(key)}
+              style={{ backgroundColor: colors[store.getKeyColor(key)] }}
               key={key}
             >
               {key.toUpperCase()}
             </button>
           ))}
           {lineNumber === 2 && (
-            <button className="keyboard--key wide-key" /*onClick={tryGuess}*/>
-              {"\u21B5"}
+            <button
+              className="keyboard--key wide-key"
+              onClick={() => store.keyPressed("Backspace")}
+            >
+              {"\u232B"}
             </button>
           )}
         </div>
       ))}
     </div>
   );
-}
+});

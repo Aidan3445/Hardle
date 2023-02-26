@@ -1,11 +1,18 @@
 import { useState } from "react";
-import Info from "./Info";
+import InfoButton from "../images/i.png";
+import InfoPanel from "../images/info.png";
 
 export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(true);
+  // const [darkMode, setDarkMode] = useState(true);
 
-  function toggleDarkMode() {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
+  // function toggleDarkMode() {
+  //   setDarkMode((prevDarkMode) => !prevDarkMode);
+  // }
+
+  const [showInfo, setShowInfo] = useState(false);
+
+  function toggleInfo() {
+    setShowInfo((prevShowInfo) => !prevShowInfo);
   }
 
   return (
@@ -14,7 +21,21 @@ export default function Navbar() {
         {darkMode ? "Dark Mode" : "Light Mode"}
       </button> */}
       <h1 className="nav--hardle">HARDLE</h1>
-      <Info />
+      <img
+        className="info--button"
+        src={InfoButton}
+        alt="infobutton"
+        onClick={toggleInfo}
+      />
+
+      {showInfo && (
+        <img
+          className="info--panel"
+          src={InfoPanel}
+          alt="infopanel"
+          onClick={toggleInfo}
+        />
+      )}
     </nav>
   );
 }

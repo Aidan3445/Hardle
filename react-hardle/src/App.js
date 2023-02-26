@@ -7,13 +7,11 @@ import puzzleStore from "./store/puzzleStore.js";
 import Navbar from "./components/Navbar.js";
 import Guess from "./components/Guess.js";
 import Keyboard from "./components/Keyboard.js";
-// import Stats from "./components/Stats.js";
+import Stats from "./components/Stats.js";
 
 // main app component
 export default observer(function App() {
   const store = useLocalObservable(() => puzzleStore);
-
-  // const [game, updateGame] = useState(hardle);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyup);
@@ -26,7 +24,7 @@ export default observer(function App() {
     store.keyPressed(e.key);
   }
 
-  // const [showStats, toggleStats] = useState(false);
+  const [showStats, toggleStats] = useState(false);
 
   return (
     <div className="app">
@@ -42,8 +40,8 @@ export default observer(function App() {
           key={index}
         />
       ))}
-      <Keyboard />
-      {/* {showStats && <Stats />} */}
+      <Keyboard store={store} />
+      {(store.won || store.lost) && showStats && <Stats />}
     </div>
   );
 });
