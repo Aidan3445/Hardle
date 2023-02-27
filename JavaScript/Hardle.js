@@ -441,6 +441,7 @@ class Hardle {
     if (json.guessCount < 9) {
       game.guesses[json.guessCount].clear();
     }
+
     return game;
   }
 }

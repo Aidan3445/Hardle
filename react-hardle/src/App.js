@@ -29,7 +29,7 @@ export default observer(function App() {
         return store.save();
     };
 
-  const [showStats, toggleStats] = useState(true);
+  const [showStats, toggleStats] = useState(false);
 
   return (
     <div className="app">
