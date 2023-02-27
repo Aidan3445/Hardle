@@ -7,6 +7,11 @@ const qwerty = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 export default observer(function Keyboard(props) {
   const { store } = props;
 
+  function keyPressed(e, key) {
+    e.target.blur();
+    store.keyPressed(key)
+  }
+
   // Keyboard component result
   return (
     <div className="keyboard">
@@ -23,7 +28,7 @@ export default observer(function Keyboard(props) {
           {line.split("").map((key) => (
             <button
               className="keyboard--key"
-              onClick={() => store.keyPressed(key)}
+              onClick={(e) => keyPressed(e, key)}
               style={{ backgroundColor: colors[store.getKeyColor(key)] }}
               key={key}
             >

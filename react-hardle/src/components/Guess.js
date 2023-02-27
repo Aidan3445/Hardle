@@ -8,12 +8,15 @@ import Trash from "../images/trash.png";
 export default observer(function Guess(props) {
   const { store, secretWord, guess, tileColors, isGuessed, wordIndex } = props;
 
-  function tileClicked(letterIndex) {
+  function tileClicked(e, letterIndex) {
+    e.target.blur();
     store.tileClicked(wordIndex, letterIndex);
   }
 
   function resetTiles() {
-    store.resetWordColors(wordIndex);
+    if (isGuessed) {
+      store.resetWordColors(wordIndex);
+    }
   }
 
   return (
@@ -34,7 +37,7 @@ export default observer(function Guess(props) {
             <Tile
               letter={guess[index]}
               color={tileColors[index]}
-              handleClick={() => tileClicked(index)}
+              handleClick={(e) => tileClicked(e, index)}
               key={index}
             />
           ))}

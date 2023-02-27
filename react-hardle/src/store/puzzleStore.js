@@ -12,13 +12,21 @@ export default {
 
   // setup the game
   init() {
-    this.secretWord =
-      HardleWords.secretWords[
-        Math.floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000)
-      ];
-    this.guesses = [...Array(9).fill("")];
-    this.tileColors = [...Array(9).fill([])];
-    this.guessCount = 0;
+    var savedState = JSON.parse(this.load());
+    if (savedState) {
+      this.secretWord = savedState.secretWord;
+    this.guesses = savedState.guesses;
+    this.tileColors = savedState.tileColors;
+    this.guessCount = savedState.guessCount;
+    } else {
+      this.secretWord =
+        HardleWords.secretWords[
+          Math.floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000)
+        ];
+      this.guesses = [...Array(9).fill("")];
+      this.tileColors = [...Array(9).fill([])];
+      this.guessCount = 0;
+    }
   },
 
   // was the game won
@@ -26,7 +34,7 @@ export default {
   get won() {
     return (
       this.guessCount !== 0 &&
-      this.guesses[this.guessCount - 1].word === this.secretWord
+      this.guesses[this.guessCount - 1] === this.secretWord
     );
   },
 
@@ -101,5 +109,21 @@ export default {
       }
     });
     return maxColor;
+  },
+
+  // save game state to localStorage
+  save() {
+    var gameState = {
+      secretWord: this.secretWord, // add encryption
+      guesses: [...this.guesses],
+      tileColors: [...[...this.tileColors]],
+      guessCount: this.guessCount,
+    };
+    localStorage.setItem("7lEU8htFNd", JSON.stringify(gameState));
+  },
+
+  // load game state from localStorage
+  load() {
+    return localStorage.getItem("7lEU8htFNd");
   },
 };

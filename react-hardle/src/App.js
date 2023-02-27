@@ -7,7 +7,7 @@ import puzzleStore from "./store/puzzleStore.js";
 import Navbar from "./components/Navbar.js";
 import Guess from "./components/Guess.js";
 import Keyboard from "./components/Keyboard.js";
-import Stats from "./components/Stats.js";
+import EndScreen from "./components/EndScreen.js";
 
 // main app component
 export default observer(function App() {
@@ -24,7 +24,12 @@ export default observer(function App() {
     store.keyPressed(e.key);
   }
 
-  const [showStats, toggleStats] = useState(false);
+  window.onbeforeunload = function()
+    {
+        return store.save();
+    };
+
+  const [showStats, toggleStats] = useState(true);
 
   return (
     <div className="app">
@@ -41,7 +46,7 @@ export default observer(function App() {
         />
       ))}
       <Keyboard store={store} />
-      {(store.won || store.lost) && showStats && <Stats />}
+      {(store.won || store.lost) && showStats && <EndScreen store={store}/>}
     </div>
   );
 });

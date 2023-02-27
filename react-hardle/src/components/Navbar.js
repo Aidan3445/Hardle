@@ -20,7 +20,7 @@ export default function Navbar() {
       {/* <button className="nav--colormode" onClick={toggleDarkMode}>
         {darkMode ? "Dark Mode" : "Light Mode"}
       </button> */}
-      <h1 className="nav--hardle">HARDLE</h1>
+      <h1 className="hardle">HARDLE</h1>
       <img
         className="info--button"
         src={InfoButton}
