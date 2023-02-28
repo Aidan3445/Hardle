@@ -9,24 +9,28 @@ export default {
   tileColors: [],
   // guesses[guessCount] is the current word
   guessCount: 0,
+  // show stats page after game
+  showStats: false,
 
   // setup the game
   init() {
     var savedState = JSON.parse(this.load());
-    if (savedState) {
+    var todaysWord =
+      HardleWords.secretWords[
+        Math.floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000)
+      ];
+    if (savedState && savedState.secretWord === todaysWord) {
       this.secretWord = savedState.secretWord;
-    this.guesses = savedState.guesses;
-    this.tileColors = savedState.tileColors;
-    this.guessCount = savedState.guessCount;
+      this.guesses = savedState.guesses;
+      this.tileColors = savedState.tileColors;
+      this.guessCount = savedState.guessCount;
     } else {
-      this.secretWord =
-        HardleWords.secretWords[
-          Math.floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000)
-        ];
+      this.secretWord = todaysWord;
       this.guesses = [...Array(9).fill("")];
       this.tileColors = [...Array(9).fill([])];
       this.guessCount = 0;
     }
+    this.showStats = this.won || this.lost;
   },
 
   // was the game won
@@ -68,6 +72,7 @@ export default {
           HardleWords.allWords.includes(currentWord)
         ) {
           this.guessCount += 1;
+          this.onWinLoss();
         }
         break;
       default:
@@ -111,6 +116,13 @@ export default {
     return maxColor;
   },
 
+  // toggle show stats
+  toggleStats() {
+    if (this.won || this.lost) {
+      this.showStats = !this.showStats;
+    }
+  },
+
   // save game state to localStorage
   save() {
     var gameState = {
@@ -125,5 +137,45 @@ export default {
   // load game state from localStorage
   load() {
     return localStorage.getItem("7lEU8htFNd");
+  },
+
+  // get stats
+  // returns stats array
+  get stats() {
+    var stats = localStorage.getItem("25bkUH9cO0P");
+
+    if (stats) {
+      return stats.split(",").map((x) => parseInt(x));
+    }
+
+    return this.newStats;
+  },
+
+  // create, save, and return a new stats array
+  get newStats() {
+    var stats = [...Array(10).fill(0)];
+    localStorage.setItem("25bkUH9cO0P", stats);
+    return stats;
+  },
+
+  // run once on win/loss to update stats
+  onWinLoss() {
+    if (this.won || this.lost) {
+      var statsString = localStorage.getItem("25bkUH9cO0P");
+      let currentStats;
+      if (statsString) {
+        currentStats = JSON.parse(currentStats);
+      } else {
+        currentStats = this.newStats;
+      }
+      if (this.won) {
+        currentStats[this.guessCount] += 1;
+      } else if (this.lost) {
+        currentStats[0] += 1;
+        this.guessCount = 0;
+      }
+      localStorage.setItem("25bkUH9cO0P", currentStats);
+      this.showStats = true;
+    }
   },
 };

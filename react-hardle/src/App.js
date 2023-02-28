@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import "./App.css";
 
@@ -24,16 +24,13 @@ export default observer(function App() {
     store.keyPressed(e.key);
   }
 
-  window.onbeforeunload = function()
-    {
-        return store.save();
-    };
-
-  const [showStats, toggleStats] = useState(false);
+  window.onbeforeunload = function () {
+    return store.save();
+  };
 
   return (
-    <div className="app">
-      <Navbar />
+    <div>
+      <Navbar store={store} />
       {store.guesses.map((guess, index) => (
         <Guess
           store={store}
@@ -46,7 +43,7 @@ export default observer(function App() {
         />
       ))}
       <Keyboard store={store} />
-      {(store.won || store.lost) && showStats && <EndScreen store={store}/>}
+      {store.showStats && <EndScreen store={store} />}
     </div>
   );
 });

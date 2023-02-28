@@ -2,7 +2,8 @@ import { useState } from "react";
 import InfoButton from "../images/i.png";
 import InfoPanel from "../images/info.png";
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const { store } = props;
   // const [darkMode, setDarkMode] = useState(true);
 
   // function toggleDarkMode() {
@@ -20,7 +21,7 @@ export default function Navbar() {
       {/* <button className="nav--colormode" onClick={toggleDarkMode}>
         {darkMode ? "Dark Mode" : "Light Mode"}
       </button> */}
-      <h1 className="hardle">HARDLE</h1>
+      <h1 className="hardle" onClick={() => store.toggleStats()}>HARDLE</h1>
       <img
         className="info--button"
         src={InfoButton}
