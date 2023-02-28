@@ -16,9 +16,7 @@ export default {
   init() {
     var savedState = JSON.parse(this.load());
     var todaysWord =
-      HardleWords.secretWords[
-        Math.floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000)
-      ];
+      HardleWords.secretWords[this.day];
     if (savedState && savedState.secretWord === todaysWord) {
       this.secretWord = savedState.secretWord;
       this.guesses = savedState.guesses;
@@ -31,6 +29,12 @@ export default {
       this.guessCount = 0;
     }
     this.showStats = this.won || this.lost;
+  },
+
+  // get day of Hardle
+  // returns index of secretWords list
+  get day() {
+    return Math.floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000);
   },
 
   // was the game won

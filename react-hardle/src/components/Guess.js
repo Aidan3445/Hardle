@@ -59,6 +59,7 @@ function Tile(props) {
       className="tile"
       onClick={handleClick}
       style={{ backgroundColor: letter ? colors[color] : white }}
+      tabIndex={-1}
     >
       {letter}
     </button>
