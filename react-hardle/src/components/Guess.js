@@ -42,9 +42,7 @@ export default observer(function Guess(props) {
             />
           ))}
       </div>
-      <div style={{ width: "70px" }}>
-        <Pegs secretWord={secretWord} guess={guess} isGuessed={isGuessed} />
-      </div>
+      <Pegs secretWord={secretWord} guess={guess} isGuessed={isGuessed} />
     </div>
   );
 });
@@ -130,7 +128,7 @@ function Peg(props) {
       className="pegs--peg"
       style={{
         background: color,
-        transform: `translate(25px) rotate(${degrees}deg) translate(20px)`,
+        transform: `translate(2.5vw) rotate(${degrees}deg) translate(2vh)`,
       }}
     ></div>
   );

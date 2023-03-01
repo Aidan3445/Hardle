@@ -31,6 +31,7 @@ export default observer(function App() {
   return (
     <div>
       <Navbar store={store} />
+      <main>
       {store.guesses.map((guess, index) => (
         <Guess
           store={store}
@@ -44,6 +45,7 @@ export default observer(function App() {
       ))}
       <Keyboard store={store} />
       {store.showStats && <EndScreen store={store} />}
+      </main>
     </div>
   );
 });
