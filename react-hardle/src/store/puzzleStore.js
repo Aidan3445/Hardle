@@ -1,6 +1,7 @@
 import HardleWords from "../data/HardleWords.json";
+import { darkgray, yellow, green, white } from "../App.js";
 
-export default {
+var store = {
   // the current secret word
   secretWord: "",
   // guessed words
@@ -15,8 +16,7 @@ export default {
   // setup the game
   init() {
     var savedState = JSON.parse(this.load());
-    var todaysWord =
-      HardleWords.secretWords[this.day];
+    var todaysWord = HardleWords.secretWords[this.day];
     if (savedState && savedState.secretWord === todaysWord) {
       this.secretWord = savedState.secretWord;
       this.guesses = savedState.guesses;
@@ -34,7 +34,9 @@ export default {
   // get day of Hardle
   // returns index of secretWords list
   get day() {
-    return Math.floor((new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000);
+    return Math.floor(
+      (new Date() - new Date(2022, 4, 7)) / 60 / 60 / 24 / 1000
+    );
   },
 
   // was the game won
@@ -53,9 +55,10 @@ export default {
   },
 
   // events when physical or virtual key pressed
+  // returns false if the guess is invalid
   keyPressed(key) {
     if (this.won || this.lost) {
-      return;
+      return true;
     }
     var currentWord = this.guesses[this.guessCount];
     var currentColors = this.tileColors[this.guessCount];
@@ -71,12 +74,14 @@ export default {
         );
         break;
       case "Enter":
-        if (
-          currentWord.length === 5 &&
-          HardleWords.allWords.includes(currentWord)
-        ) {
-          this.guessCount += 1;
-          this.onWinLoss();
+        if (currentWord.length === 5) {
+          if (HardleWords.allWords.includes(currentWord)) {
+            this.guessCount += 1;
+            this.onWinLoss();
+          } else {
+            // 5 letters typed but word is invalid
+            return false;
+          }
         }
         break;
       default:
@@ -85,6 +90,7 @@ export default {
           this.tileColors[this.guessCount].push(0);
         }
     }
+    return true;
   },
 
   // update the color of a tile when clicked, update keyboard when necessary
@@ -123,6 +129,48 @@ export default {
     return maxColor;
   },
 
+  // get pegs for a guess
+  // return color array
+  getPegs(wordIndex) {
+    if (wordIndex >= this.guessCount) {
+      return Array(5).fill(white);
+    }
+    let y = 0; // number of yellow pegs
+    let g = 0; // number of green pegs
+    let word = [...this.guesses[wordIndex]]; // copy the guess made to an array
+    let target = [...this.secretWord]; // copy the secret word to an array
+
+    // check for correct/green letters first
+    target.map((letter, index) => {
+      if (letter === word[index]) {
+        g++;
+        // set letter at index to avoid double counting
+        word[index] = "0";
+        return "1";
+      }
+      return letter;
+    });
+
+    // check fro misplaced/yellow letters second
+    target.map((letter) => {
+      if (word.indexOf(letter) !== -1) {
+        y++;
+        // reset letter index to avoid double counting
+        word[word.indexOf(letter)] = 0;
+        return 1;
+      }
+      return letter;
+    });
+
+    // fill pegColors array
+    var pegColors = [
+      ...Array(y).fill(yellow),
+      ...Array(g).fill(green),
+      ...Array(5 - y - g).fill(darkgray),
+    ];
+    return pegColors;
+  },
+
   // toggle show stats
   toggleStats() {
     if (this.won || this.lost) {
@@ -153,7 +201,7 @@ export default {
 
     if (stats) {
       var statsArray = stats.split(",").map((x) => parseInt(x));
-      return statsArray
+      return statsArray;
     }
 
     return this.newStats;
@@ -187,3 +235,5 @@ export default {
     }
   },
 };
+
+export default store;

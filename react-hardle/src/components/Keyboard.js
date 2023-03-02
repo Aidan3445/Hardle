@@ -5,11 +5,13 @@ const qwerty = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
 
 // Keyboard component
 export default observer(function Keyboard(props) {
-  const { store } = props;
+  const { store, newPopup } = props;
 
   function keyPressed(e, key) {
     e.target.blur();
-    store.keyPressed(key)
+    if (!store.keyPressed(key)) {
+      newPopup("Invalid word.");
+    }
   }
 
   // Keyboard component result
@@ -20,7 +22,7 @@ export default observer(function Keyboard(props) {
           {lineNumber === 2 && (
             <button
               className="keyboard--key wide-key"
-              onClick={() => store.keyPressed("Enter")}
+              onClick={(e) => keyPressed(e, "Enter")}
             >
               {"\u21B5"}
             </button>
@@ -38,7 +40,7 @@ export default observer(function Keyboard(props) {
           {lineNumber === 2 && (
             <button
               className="keyboard--key wide-key"
-              onClick={() => store.keyPressed("Backspace")}
+              onClick={(e) => keyPressed(e, "Backspace")}
             >
               {"\u232B"}
             </button>

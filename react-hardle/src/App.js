@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import "./App.css";
 
@@ -14,20 +14,32 @@ export default observer(function App() {
   const store = useLocalObservable(() => puzzleStore);
 
   useEffect(() => {
-     document.body.style.zoom = "page-fill";
+    function handleKeyup(e) {
+      if (!store.keyPressed(e.key)) {
+        newPopup("Invalid word.");
+      }
+    }
+
     window.addEventListener("keyup", handleKeyup);
     store.init();
 
     return () => window.removeEventListener("keyup", handleKeyup);
-  }, []);
+  }, [store]);
 
-  function handleKeyup(e) {
-    store.keyPressed(e.key);
-  }
-
+  // save before reload and tab close
   window.onbeforeunload = function () {
     return store.save();
   };
+
+  // popup handler
+  const [popup, setPopup] = useState({ show: false, text: "" });
+
+  function newPopup(popupText) {
+    if (!popup.show) {
+      setPopup(() => ({ show: true, text: popupText }));
+      setTimeout(() => setPopup(() => ({ show: false, text: "" })), 2000);
+    }
+  }
 
   return (
     <div>
@@ -36,7 +48,6 @@ export default observer(function App() {
         {store.guesses.map((guess, index) => (
           <Guess
             store={store}
-            secretWord={store.secretWord}
             guess={guess}
             tileColors={store.tileColors[index]}
             isGuessed={store.guessCount > index}
@@ -44,9 +55,10 @@ export default observer(function App() {
             key={index}
           />
         ))}
-        <Keyboard store={store} />
+        <Keyboard store={store} newPopup={newPopup} />
       </main>
-      {store.showStats && <EndScreen store={store} />}
+      {store.showStats && <EndScreen store={store} newPopup={newPopup} />}
+      {popup.show && <button className="popup">{popup.text}</button>}
     </div>
   );
 });

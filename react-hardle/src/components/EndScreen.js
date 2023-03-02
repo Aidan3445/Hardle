@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { lightgray, green } from "../App";
+import { lightgray, green } from "../App.js";
 
 export default function EndScreen(props) {
-  const { store } = props;
+  const { store, newPopup } = props;
 
   function guessesText() {
     if (store.guessCount === 0) {
@@ -26,7 +26,7 @@ export default function EndScreen(props) {
         <h2>
           NEXT HARDLE <Timer />
         </h2>
-        <Share store={store} />
+        <Share store={store} newPopup={newPopup} />
       </div>
     </div>
   );
@@ -75,7 +75,7 @@ function Definition(props) {
 
   useEffect(() => {
     getDefinition(secretWord);
-  }, []);
+  }, [secretWord]);
 
   // get definition from https://dictionaryapi.dev/ API
   function getDefinition(word) {
@@ -111,7 +111,7 @@ function Timer() {
 
   // helper function for formatting the timer to 00:00:00 format
   function addZero(time) {
-    if (String(time).length == 1) {
+    if (String(time).length === 1) {
       time = "0" + time;
     }
     return time;
@@ -121,41 +121,34 @@ function Timer() {
 }
 
 function Share(props) {
-  const { store } = props;
+  const { store, newPopup } = props;
 
   // create message for sharing scores
-  function getShareText() {
+  function getShareText(e) {
+    // prevent hiding end screen on click
+    e.stopPropagation();
     // start with the score
-    let copyPaste = this.score();
+    var copyPaste = score();
     // list of emojis for the guess pegs
-    let emoji = ["⚪", "🟡", "🟢"];
+    var emoji = {
+      "rgb(125, 125, 125)": "⚪",
+      "rgb(255, 224, 71)": "🟡",
+      "rgb(120, 215, 70)": "🟢",
+    };
     // for each guess, get the pegs and convert them into strings
-    for (let n = 0; n < this.guessCount; n++) {
-      let guess = this.guesses[n];
-      let pegCounts = guess.getPegs();
-      let tempBoxes = "";
-      for (let i = 0; i < 3; i++) {
-        tempBoxes += emoji[i].repeat(pegCounts[i]);
-      }
+    for (let n = 0; n < store.guessCount; n++) {
+      var guessText = store
+        .getPegs(n)
+        .reduce((acc, cur) => acc + emoji[cur], "");
+
       // add each as a new line to the score message
-      copyPaste += "\r" + tempBoxes;
+      copyPaste += "\r" + guessText;
     }
     copyPaste += "\rhttps://hardle.netlify.app/";
     // copy to clipboard
-    window.navigator.clipboard.writeText(copyPaste).then(function (x) {
+    return window.navigator.clipboard.writeText(copyPaste).then(function () {
       // popup to notify copy
-      // let copied = createButton("Copied to clipboard.");
-      // copied.position(120, 100);
-      // copied.style("font-size", "20");
-      // copied.style("color", "black");
-      // copied.style("background-color", "white");
-      // copied.style("border-radius", "5px");
-      // copied.style("border-style", "solid");
-      // copied.size(150, 25);
-      // copied.mousePressed(() => copied.remove());
-      // // set parent for relative position and scaling
-      // copied.parent("sketch");
-      // sleep(5000).then(() => copied.remove());
+      newPopup("Copied to clipboard");
     });
   }
 
@@ -174,7 +167,9 @@ function Share(props) {
     return score;
   }
 
-  console.log(score());
-
-  return <button className="share"> SHARE</button>
+  return (
+    <button className="share" onClick={getShareText}>
+      SHARE
+    </button>
+  );
 }

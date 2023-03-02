@@ -39,12 +39,27 @@ nav {
   max-height: 90%;
   max-width: 95%;
   height: auto;
-  z-index: 9998;
+  z-index: 9997;
 }
 
 /* MAIN */
 main {
   padding-top: 50px;
+}
+
+/* POPUPS */
+.popup {
+  position: fixed;
+  z-index: 9999;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  border-style: solid;
+  font-size: 1rem;
+  padding: 10px 15px;
 }
 
 /* GUESSES */
