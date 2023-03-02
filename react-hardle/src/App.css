@@ -164,7 +164,7 @@ main {
   height: auto;
   z-index: 9998;
 
-  background: rgb(185, 185, 185);
+  background: rgba(185, 185, 185, 0.95);
   border-style: solid;
   border-color: black;
   display: flex;
@@ -179,7 +179,7 @@ main {
 
 .endscreen--def {
   color: black;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1rem;
   margin: 0 10px;
 }

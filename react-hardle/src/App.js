@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { observer, useLocalObservable } from "mobx-react-lite";
 import "./App.css";
 
-import puzzleStore from "./store/puzzleStore.js";
+import Hardle from "./store/Hardle.js";
 
 import Navbar from "./components/Navbar.js";
 import Guess from "./components/Guess.js";
@@ -11,25 +11,7 @@ import EndScreen from "./components/EndScreen.js";
 
 // main app component
 export default observer(function App() {
-  const store = useLocalObservable(() => puzzleStore);
-
-  useEffect(() => {
-    function handleKeyup(e) {
-      if (!store.keyPressed(e.key)) {
-        newPopup("Invalid word.");
-      }
-    }
-
-    window.addEventListener("keyup", handleKeyup);
-    store.init();
-
-    return () => window.removeEventListener("keyup", handleKeyup);
-  }, [store]);
-
-  // save before reload and tab close
-  window.onbeforeunload = function () {
-    return store.save();
-  };
+  const store = useLocalObservable(() => Hardle);
 
   // popup handler
   const [popup, setPopup] = useState({ show: false, text: "" });
@@ -40,6 +22,25 @@ export default observer(function App() {
       setTimeout(() => setPopup(() => ({ show: false, text: "" })), 2000);
     }
   }
+
+  useEffect(() => {
+    store.init();
+
+    function handleKeyup(e) {
+      if (!store.keyPressed(e.key)) {
+        newPopup("Invalid word.");
+      }
+    }
+
+    window.addEventListener("keyup", handleKeyup);
+    return () => window.removeEventListener("keyup", handleKeyup);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // save before reload and tab close
+  window.onbeforeunload = function () {
+    return store.save();
+  };
 
   return (
     <div>
