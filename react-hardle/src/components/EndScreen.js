@@ -16,16 +16,16 @@ export default function EndScreen(props) {
 
   return (
     <div className="endscreen" onClick={() => store.toggleStats()}>
-      <h1 className="hardle">
+      <h1 className="hardle endscreen--title">
         {`HARDLE ${guessesText()}`} <br />
-        {store.secretWord} <br />
-        <Definition secretWord={store.secretWord} />
+        {store.secretWord}
       </h1>
+      <Definition secretWord={store.secretWord} />
       <Stats guessCount={store.guessCount} stats={store.stats} />
       <div className="share-countdown">
-        <h1>
+        <h2>
           NEXT HARDLE <Timer />
-        </h1>
+        </h2>
         <Share store={store} />
       </div>
     </div>
@@ -41,11 +41,11 @@ function Stats(props) {
   return (
     <div className="stats">
       <div className="stats--totals">
-        <h1>Played {totalPlayed}</h1>
-        <h1>
+        <h2>Played {totalPlayed}</h2>
+        <h2>
           {"Win % "}
           {Math.round(((totalPlayed - stats[0]) / totalPlayed) * 100)}
-        </h1>
+        </h2>
       </div>
       <div className="stats--chart">
         <p className="stats--title">Guesses</p>
@@ -92,7 +92,7 @@ function Definition(props) {
       });
   }
 
-  return <div style={{ color: "black", fontSize: "1.5rem" }}>{definition}</div>;
+  return <div className="endscreen--def">{definition}</div>;
 }
 
 function Timer() {

@@ -89,6 +89,9 @@ export default {
 
   // update the color of a tile when clicked, update keyboard when necessary
   tileClicked(wordIndex, letterIndex) {
+    if (this.guesses[wordIndex].length <= letterIndex) {
+      return;
+    }
     var prevColor = this.tileColors[wordIndex][letterIndex];
     this.tileColors[wordIndex][letterIndex] = (prevColor + 1) % 4;
   },
@@ -149,7 +152,8 @@ export default {
     var stats = localStorage.getItem("25bkUH9cO0P");
 
     if (stats) {
-      return stats.split(",").map((x) => parseInt(x));
+      var statsArray = stats.split(",").map((x) => parseInt(x));
+      return statsArray
     }
 
     return this.newStats;
@@ -157,9 +161,9 @@ export default {
 
   // create, save, and return a new stats array
   get newStats() {
-    var stats = [...Array(10).fill(0)];
-    localStorage.setItem("25bkUH9cO0P", stats);
-    return stats;
+    var statsArray = [...Array(10).fill(0)];
+    localStorage.setItem("25bkUH9cO0P", statsArray);
+    return statsArray;
   },
 
   // run once on win/loss to update stats

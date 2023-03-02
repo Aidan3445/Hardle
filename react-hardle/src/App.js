@@ -14,6 +14,7 @@ export default observer(function App() {
   const store = useLocalObservable(() => puzzleStore);
 
   useEffect(() => {
+     document.body.style.zoom = "page-fill";
     window.addEventListener("keyup", handleKeyup);
     store.init();
 
@@ -32,20 +33,20 @@ export default observer(function App() {
     <div>
       <Navbar store={store} />
       <main>
-      {store.guesses.map((guess, index) => (
-        <Guess
-          store={store}
-          secretWord={store.secretWord}
-          guess={guess}
-          tileColors={store.tileColors[index]}
-          isGuessed={store.guessCount > index}
-          wordIndex={index}
-          key={index}
-        />
-      ))}
-      <Keyboard store={store} />
-      {store.showStats && <EndScreen store={store} />}
+        {store.guesses.map((guess, index) => (
+          <Guess
+            store={store}
+            secretWord={store.secretWord}
+            guess={guess}
+            tileColors={store.tileColors[index]}
+            isGuessed={store.guessCount > index}
+            wordIndex={index}
+            key={index}
+          />
+        ))}
+        <Keyboard store={store} />
       </main>
+      {store.showStats && <EndScreen store={store} />}
     </div>
   );
 });
