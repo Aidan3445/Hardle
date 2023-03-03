@@ -217,13 +217,7 @@ var store = {
   // run once on win/loss to update stats
   onWinLoss() {
     if (this.won || this.lost) {
-      var statsString = localStorage.getItem("25bkUH9cO0P");
-      let currentStats;
-      if (statsString) {
-        currentStats = JSON.parse(currentStats);
-      } else {
-        currentStats = this.newStats;
-      }
+      var currentStats = this.stats
       if (this.won) {
         currentStats[this.guessCount] += 1;
       } else if (this.lost) {
