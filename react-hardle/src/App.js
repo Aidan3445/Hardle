@@ -32,15 +32,33 @@ export default observer(function App() {
       }
     }
 
+    function reseizeUpdateVars() {
+      var vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+      var vw = window.innerWidth * 0.01;
+      document.documentElement.style.setProperty("--vw", `${vw}px`);
+    }
+
+    reseizeUpdateVars();
+
     window.addEventListener("keyup", handleKeyup);
-    return () => window.removeEventListener("keyup", handleKeyup);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    window.addEventListener("resize", reseizeUpdateVars);
+
+    return () => {
+      window.removeEventListener("keyup", handleKeyup);
+      window.removeEventListener("resize", reseizeUpdateVars);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // save before reload and tab close
-  window.onbeforeunload = function () {
+  var isOnIOS =
+    navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
+  var eventName = isOnIOS ? "pagehide" : "beforeunload";
+  window.addEventListener(eventName, function () {
     return store.save();
-  };
+  });
 
   return (
     <div>

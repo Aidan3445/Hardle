@@ -89,7 +89,7 @@ function Peg(props) {
       className="pegs--peg"
       style={{
         background: color,
-        transform: `translate(2.5vw) rotate(${degrees}deg) translate(2vh)`,
+        transform: `translate(calc(var(--vw, 1vw) * 4), calc(var(--vh, 1vh) * 2.5)) rotate(${degrees}deg) translate(2vh)`,
       }}
     ></div>
   );
