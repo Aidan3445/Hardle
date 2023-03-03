@@ -228,7 +228,6 @@ var store = {
         currentStats[this.guessCount] += 1;
       } else if (this.lost) {
         currentStats[0] += 1;
-        this.guessCount = 0;
       }
       localStorage.setItem("25bkUH9cO0P", currentStats);
       this.showStats = true;

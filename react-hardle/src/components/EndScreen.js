@@ -5,7 +5,7 @@ export default function EndScreen(props) {
   const { store, newPopup } = props;
 
   function guessesText() {
-    if (store.guessCount === 0) {
+    if (store.lost) {
       return "was";
     }
     if (store.guessCount === 1) {
@@ -21,7 +21,11 @@ export default function EndScreen(props) {
         {store.secretWord}
       </h1>
       <Definition secretWord={store.secretWord} />
-      <Stats guessCount={store.guessCount} stats={store.stats} />
+      <Stats
+        guessCount={store.guessCount}
+        stats={store.stats}
+        won={store.won}
+      />
       <div className="share-countdown">
         <h2>
           NEXT HARDLE <Timer />
@@ -33,7 +37,7 @@ export default function EndScreen(props) {
 }
 
 function Stats(props) {
-  const { guessCount, stats } = props;
+  const { guessCount, stats, won } = props;
 
   var totalPlayed = stats.reduce((acc, val) => acc + val, 0);
   var maxStat = stats.reduce((acc, val) => Math.max(acc, val), 0);
@@ -56,7 +60,7 @@ function Stats(props) {
               className="chart--bar"
               style={{
                 width: `${(90 * count) / maxStat}%`,
-                background: index + 1 === guessCount ? green : lightgray,
+                background: won && index + 1 === guessCount ? green : lightgray,
               }}
             >
               <div className="chart--number">{count}</div>
