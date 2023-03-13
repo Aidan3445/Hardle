@@ -141,23 +141,23 @@ var store = {
     let target = [...this.secretWord]; // copy the secret word to an array
 
     // check for correct/green letters first
-    target.map((letter, index) => {
+    target = target.map((letter, index) => {
       if (letter === word[index]) {
         g++;
         // set letter at index to avoid double counting
         word[index] = "0";
         return "1";
       }
-      return letter;
+      return "letter";
     });
 
     // check fro misplaced/yellow letters second
-    target.map((letter) => {
+    target = target.map((letter) => {
       if (word.indexOf(letter) !== -1) {
         y++;
         // reset letter index to avoid double counting
-        word[word.indexOf(letter)] = 0;
-        return 1;
+        word[word.indexOf(letter)] = "0";
+        return "1";
       }
       return letter;
     });
@@ -168,6 +168,7 @@ var store = {
       ...Array(g).fill(green),
       ...Array(5 - y - g).fill(darkgray),
     ];
+    console.log(this.guesses[wordIndex], word, target, pegColors);
     return pegColors;
   },
 
