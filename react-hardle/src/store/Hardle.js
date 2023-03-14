@@ -148,11 +148,11 @@ var store = {
         word[index] = "0";
         return "1";
       }
-      return "letter";
+      return letter;
     });
 
     // check fro misplaced/yellow letters second
-    target = target.map((letter) => {
+    target.map((letter) => {
       if (word.indexOf(letter) !== -1) {
         y++;
         // reset letter index to avoid double counting
@@ -168,7 +168,6 @@ var store = {
       ...Array(g).fill(green),
       ...Array(5 - y - g).fill(darkgray),
     ];
-    console.log(this.guesses[wordIndex], word, target, pegColors);
     return pegColors;
   },
 
