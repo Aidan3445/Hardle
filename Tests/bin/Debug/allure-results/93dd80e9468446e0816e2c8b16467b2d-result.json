@@ -1,0 +1,206 @@
+{
+  "uuid": "da6d2259-8000-40df-b9b7-555b1bb42402-tr-0-1010",
+  "historyId": "Tests.Tests.AllureReportTests.WinGameTest",
+  "fullName": "Tests.Tests.AllureReportTests.WinGameTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "WinGameTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "WinGameTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "WinGameTest"
+  },
+  "stage": "finished",
+  "description": "Check that the end screen displays that the game was won and correct bar is green.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Get hardle word."
+        }
+      ],
+      "start": 1689375719442,
+      "stop": 1689375719442
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Make temporary driver and go to hardle page."
+        }
+      ],
+      "start": 1689375719442,
+      "stop": 1689375719442
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Make 9 bad guesses, CANOE, to lose the game."
+        }
+      ],
+      "start": 1689375724694,
+      "stop": 1689375724694
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Grab hardle word from endscreen."
+        }
+      ],
+      "start": 1689375729471,
+      "stop": 1689375729471
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Quit temporary driver."
+        }
+      ],
+      "start": 1689375729963,
+      "stop": 1689375729963
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Hardle word is: CLEAN."
+        }
+      ],
+      "start": 1689375730033,
+      "stop": 1689375730033
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Make 3 bad guesses followed by the correct guess."
+        }
+      ],
+      "start": 1689375730035,
+      "stop": 1689375730035
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "a6809832c93d414baf4eb5340c81b6ab-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "e3fec616d3d74192952e2c1cc270b18e-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689375714120,
+  "stop": 1689375734188
+}

@@ -1,0 +1,87 @@
+{
+  "uuid": "baea7f70-5854-4e51-a4c2-bdab30e7303f-tr-0-1001",
+  "historyId": "Tests.Tests.AllureReportTests.LoseGameTests",
+  "fullName": "Tests.Tests.AllureReportTests.LoseGameTests",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "LoseGameTests"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "LoseGameTests",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "  Expected: True\n  But was:  False\n",
+    "trace": "  at Tests.Tests.AllureReportTests.LoseGameTests () [0x00047] in /Users/aidan/Documents/CS/NET/Tests/Tests/AllureReportTests.cs:184 \n"
+  },
+  "stage": "finished",
+  "description": "Check that the end screen displays that the game was lost.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Make 9 bad guesses: CANOE"
+        }
+      ],
+      "start": 1689214338943,
+      "stop": 1689214338946
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "321f567dc0b24bb9bf6fee3e989b69d9-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "d352a43eb58d4896842c74370ef63298-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689214332605,
+  "stop": 1689214339904
+}

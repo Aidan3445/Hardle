@@ -1,0 +1,226 @@
+{
+  "uuid": "e00df2c7-dc69-48cd-9d4f-fcd88570e0d5-tr-0-1011",
+  "historyId": "Tests.Tests.AllureReportTests.ShareButtonTests",
+  "fullName": "Tests.Tests.AllureReportTests.ShareButtonTests",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "22"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "ShareButtonTests"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "ShareButtonTests",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "ShareButtonTests"
+  },
+  "stage": "finished",
+  "description": "Check that share button correctly copies the score.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Get hardle word."
+        }
+      ],
+      "start": 1689375698435,
+      "stop": 1689375698435
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Make temporary driver and go to hardle page."
+        }
+      ],
+      "start": 1689375698436,
+      "stop": 1689375698436
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Make 9 bad guesses, CANOE, to lose the game."
+        }
+      ],
+      "start": 1689375703754,
+      "stop": 1689375703754
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Grab hardle word from endscreen."
+        }
+      ],
+      "start": 1689375708903,
+      "stop": 1689375708903
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Quit temporary driver."
+        }
+      ],
+      "start": 1689375709388,
+      "stop": 1689375709388
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Hardle word is: CLEAN."
+        }
+      ],
+      "start": 1689375709461,
+      "stop": 1689375709461
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Make 1 bad guesses followed by the correct guess."
+        }
+      ],
+      "start": 1689375709461,
+      "stop": 1689375709461
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Click share button."
+        }
+      ],
+      "start": 1689375712337,
+      "stop": 1689375712337
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "27c1fb63caf7404d8ffc895483c0bc07-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "25434ad39b5544bf9198d27080c4cbef-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689375693248,
+  "stop": 1689375714117
+}

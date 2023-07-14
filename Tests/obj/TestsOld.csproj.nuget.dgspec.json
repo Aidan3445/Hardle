@@ -1,0 +1,136 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/aidan/Documents/CS/NET/TestsOld/TestsOld.csproj": {}
+  },
+  "projects": {
+    "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj",
+        "projectName": "PageObjects",
+        "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj",
+        "packagesPath": "/Users/aidan/.nuget/packages/",
+        "projectStyle": "PackagesConfig",
+        "configFilePaths": [
+          "/Users/aidan/.config/NuGet/NuGet.Config"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net46": {
+            "projectReferences": {}
+          }
+        },
+        "packagesConfigPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/packages.config"
+      },
+      "frameworks": {
+        "net46": {}
+      }
+    },
+    "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj",
+        "projectName": "Utils",
+        "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj",
+        "packagesPath": "/Users/aidan/.nuget/packages/",
+        "projectStyle": "PackagesConfig",
+        "configFilePaths": [
+          "/Users/aidan/.config/NuGet/NuGet.Config"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        },
+        "packagesConfigPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/packages.config"
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "/Users/aidan/Documents/CS/NET/TestsOld/TestsOld.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/aidan/Documents/CS/NET/TestsOld/TestsOld.csproj",
+        "projectName": "TestsOld",
+        "projectPath": "/Users/aidan/Documents/CS/NET/TestsOld/TestsOld.csproj",
+        "packagesPath": "/Users/aidan/.nuget/packages/",
+        "outputPath": "/Users/aidan/Documents/CS/NET/TestsOld/obj/",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "/Users/aidan/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net46"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net46": {
+            "projectReferences": {
+              "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj": {
+                "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj"
+              },
+              "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj": {
+                "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net46": {
+          "dependencies": {
+            "Microsoft.Net.Compilers.Toolset": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[114.0.5735.9000, )"
+            },
+            "Selenium.WebDriver.GeckoDriver": {
+              "target": "Package",
+              "version": "[0.33.0, )"
+            },
+            "Selenium.WebDriver.MSEdgeDriver": {
+              "target": "Package",
+              "version": "[114.0.1823.58, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "uuid": "1e82fa58-3605-4ef0-94e8-5bddc2a469b4-tr-0-1007",
+  "historyId": "Tests.Tests.AllureReportTests.GuessResetUIUpdateTest",
+  "fullName": "Tests.Tests.AllureReportTests.GuessResetUIUpdateTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "GuessResetUIUpdateTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "GuessResetUIUpdateTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "GuessResetUIUpdateTest"
+  },
+  "stage": "finished",
+  "description": "Check that reset button is displayed when guesses are made.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "type guess: CANOE"
+        }
+      ],
+      "start": 1688941771734,
+      "stop": 1688941771734
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter guess"
+        }
+      ],
+      "start": 1688941772372,
+      "stop": 1688941772372
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "debde00dd38a4969b10e9a94c39ef14c-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "3265cd6e359b491ea91660cbb1b7f5ba-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1688941766507,
+  "stop": 1688941772946
+}

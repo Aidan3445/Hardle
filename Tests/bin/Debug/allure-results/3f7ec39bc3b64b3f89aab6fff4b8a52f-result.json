@@ -1,0 +1,86 @@
+{
+  "uuid": "d295ace2-361c-4b05-8a4e-8362ccde4959-tr-0-1003",
+  "historyId": "Tests.Tests.AllureReportTests.DOMMakeGuessTest",
+  "fullName": "Tests.Tests.AllureReportTests.DOMMakeGuessTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "DOMMakeGuessTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "DOMMakeGuessTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "DOMMakeGuessTest"
+  },
+  "stage": "finished",
+  "description": "Check that guesses are entered correctly with the DOM keyboard.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter guess (DOM)"
+        }
+      ],
+      "start": 1688935539418,
+      "stop": 1688935539418
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "7d0d0465d3064b798699e67c08b2a05a-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "2cacac1182344e8e937bf612e1657d85-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1688935534092,
+  "stop": 1688935561217
+}

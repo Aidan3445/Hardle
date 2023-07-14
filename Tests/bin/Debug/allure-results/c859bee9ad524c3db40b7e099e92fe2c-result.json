@@ -1,0 +1,86 @@
+{
+  "uuid": "d51a1bf1-ef61-4177-9677-f1e7d91ddc93-tr-0-1002",
+  "historyId": "Tests.Tests.AllureReportTests.DOMDeleteKeyTest",
+  "fullName": "Tests.Tests.AllureReportTests.DOMDeleteKeyTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "DOMDeleteKeyTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "DOMDeleteKeyTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "DOMDeleteKeyTest"
+  },
+  "stage": "finished",
+  "description": "Check that backspace DOM key deletes correctly.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter D key and then delete (DOM)."
+        }
+      ],
+      "start": 1689375615225,
+      "stop": 1689375615225
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "2ec52de9553f42a89066ac856e0d4cc6-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "3a6a4813e9104be8b996e9f44f792b39-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689375609858,
+  "stop": 1689375616936
+}

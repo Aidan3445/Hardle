@@ -1,0 +1,586 @@
+{
+  "uuid": "be5ea650-a6ea-407f-9ad2-ad83872a9f86-tr-0-1001",
+  "historyId": "Tests.Tests.AllureReportTests.DOMKeyboardTest",
+  "fullName": "Tests.Tests.AllureReportTests.DOMKeyboardTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "DOMKeyboardTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "DOMKeyboardTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "DOMKeyboardTest"
+  },
+  "stage": "finished",
+  "description": "Check that QWERTY DOM keys enter correctly.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter Q key (DOM)"
+        }
+      ],
+      "start": 1688935509028,
+      "stop": 1688935509028
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter W key (DOM)"
+        }
+      ],
+      "start": 1688935510726,
+      "stop": 1688935510726
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter E key (DOM)"
+        }
+      ],
+      "start": 1688935511700,
+      "stop": 1688935511700
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter R key (DOM)"
+        }
+      ],
+      "start": 1688935512422,
+      "stop": 1688935512422
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter T key (DOM)"
+        }
+      ],
+      "start": 1688935513257,
+      "stop": 1688935513257
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter Y key (DOM)"
+        }
+      ],
+      "start": 1688935514801,
+      "stop": 1688935514801
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter U key (DOM)"
+        }
+      ],
+      "start": 1688935515606,
+      "stop": 1688935515606
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter I key (DOM)"
+        }
+      ],
+      "start": 1688935516402,
+      "stop": 1688935516402
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter O key (DOM)"
+        }
+      ],
+      "start": 1688935517203,
+      "stop": 1688935517203
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter P key (DOM)"
+        }
+      ],
+      "start": 1688935518307,
+      "stop": 1688935518307
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter A key (DOM)"
+        }
+      ],
+      "start": 1688935519774,
+      "stop": 1688935519774
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter S key (DOM)"
+        }
+      ],
+      "start": 1688935520582,
+      "stop": 1688935520582
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter D key (DOM)"
+        }
+      ],
+      "start": 1688935521324,
+      "stop": 1688935521324
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter F key (DOM)"
+        }
+      ],
+      "start": 1688935522076,
+      "stop": 1688935522076
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter G key (DOM)"
+        }
+      ],
+      "start": 1688935522841,
+      "stop": 1688935522842
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter H key (DOM)"
+        }
+      ],
+      "start": 1688935523594,
+      "stop": 1688935523594
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter J key (DOM)"
+        }
+      ],
+      "start": 1688935524388,
+      "stop": 1688935524388
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter K key (DOM)"
+        }
+      ],
+      "start": 1688935525801,
+      "stop": 1688935525801
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter L key (DOM)"
+        }
+      ],
+      "start": 1688935526684,
+      "stop": 1688935526684
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter Z key (DOM)"
+        }
+      ],
+      "start": 1688935527420,
+      "stop": 1688935527420
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter X key (DOM)"
+        }
+      ],
+      "start": 1688935528174,
+      "stop": 1688935528174
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter C key (DOM)"
+        }
+      ],
+      "start": 1688935528979,
+      "stop": 1688935528979
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter V key (DOM)"
+        }
+      ],
+      "start": 1688935529738,
+      "stop": 1688935529738
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter B key (DOM)"
+        }
+      ],
+      "start": 1688935530462,
+      "stop": 1688935530462
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter N key (DOM)"
+        }
+      ],
+      "start": 1688935532045,
+      "stop": 1688935532045
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter M key (DOM)"
+        }
+      ],
+      "start": 1688935532895,
+      "stop": 1688935532895
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "e3e3c767135d42a6a246431d62ee5fd2-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "492c675cefa94e2399a29576f6ce00e8-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1688935503081,
+  "stop": 1688935534086
+}

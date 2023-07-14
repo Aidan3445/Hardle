@@ -1,0 +1,26 @@
+{
+  "uuid": "tc-0-1000",
+  "name": "Tests.Tests.AllureReportTests",
+  "children": [],
+  "befores": [
+    {
+      "name": "OneTimeSetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1689214427311,
+      "stop": 1689214427321
+    }
+  ],
+  "afters": [],
+  "links": [],
+  "start": 1689214427300,
+  "stop": 1689214439461
+}

@@ -1,0 +1,87 @@
+{
+  "uuid": "86b954b8-0796-46a1-84be-1688bd3c14e2-tr-0-1001",
+  "historyId": "Tests.Tests.AllureReportTests.GuessPegUIUpdateTest",
+  "fullName": "Tests.Tests.AllureReportTests.GuessPegUIUpdateTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "GuessPegUIUpdateTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "GuessPegUIUpdateTest",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "  Expected and actual are both <System.String[5]>\n  Values differ at index [0]\n  Expected string length 13 but was 73. Strings differ at index 0.\n  Expected: \"255, 255, 255\"\n  But was:  \"rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-bo...\"\n  -----------^\n",
+    "trace": "  at Tests.Tests.AllureReportTests.GuessPegUIUpdateTest () [0x00043] in /Users/aidan/Documents/CS/NET/Tests/Tests/AllureReportTests.cs:136 \n"
+  },
+  "stage": "finished",
+  "description": "Check that pegs are colored when guesses are made.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "type guess: CANOE"
+        }
+      ],
+      "start": 1689212947861,
+      "stop": 1689212947864
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "557e679afb474c338150d9d32a6392f5-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "063d7a579bc6436aa5b69a4af2d708fe-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689212941594,
+  "stop": 1689213004141
+}

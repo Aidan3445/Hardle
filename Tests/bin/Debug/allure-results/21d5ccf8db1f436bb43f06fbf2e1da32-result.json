@@ -1,0 +1,86 @@
+{
+  "uuid": "37245db4-07b1-40fa-ad54-1f4a469d7752-tr-0-1001",
+  "historyId": "Tests.Tests.AllureReportTests.LoseGameTests",
+  "fullName": "Tests.Tests.AllureReportTests.LoseGameTests",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "LoseGameTests"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "LoseGameTests",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "LoseGameTests"
+  },
+  "stage": "finished",
+  "description": "Check that the end screen displays that the game was lost.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Enter 9 bad guesses: CANOE"
+        }
+      ],
+      "start": 1689214433816,
+      "stop": 1689214433818
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "6f48f7d0fd08476fbc425ba7157a5eda-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "ea5cd87f160f4ffe8e344bd837ec4621-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689214427338,
+  "stop": 1689214439369
+}

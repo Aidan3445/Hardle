@@ -1,0 +1,12 @@
+{
+  "uuid": "tc-0-1011",
+  "name": "Tests.Tests.AllureReportTests.ShareButtonTests",
+  "children": [
+    "e00df2c7-dc69-48cd-9d4f-fcd88570e0d5-tr-0-1011"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1689375693248,
+  "stop": 1689375714118
+}

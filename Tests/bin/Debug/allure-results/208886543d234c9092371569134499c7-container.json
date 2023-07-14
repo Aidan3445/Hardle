@@ -1,0 +1,12 @@
+{
+  "uuid": "tc-0-1004",
+  "name": "Tests.Tests.AllureReportTests.KeyboardTest",
+  "children": [
+    "32887286-4a33-4c8d-aa79-915db7a68216-tr-0-1004"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1688941772948,
+  "stop": 1688941783038
+}

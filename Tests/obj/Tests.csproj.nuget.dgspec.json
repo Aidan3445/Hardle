@@ -1,0 +1,126 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/aidan/Documents/CS/NET/Tests/Tests.csproj": {}
+  },
+  "projects": {
+    "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj",
+        "projectName": "PageObjects",
+        "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj",
+        "frameworks": {
+          "net46": {
+            "projectReferences": {
+              "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj": {
+                "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net46": {}
+      }
+    },
+    "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj": {
+      "restore": {
+        "projectUniqueName": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj",
+        "projectName": "Utils",
+        "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "/Users/aidan/Documents/CS/NET/Tests/Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/aidan/Documents/CS/NET/Tests/Tests.csproj",
+        "projectName": "Tests",
+        "projectPath": "/Users/aidan/Documents/CS/NET/Tests/Tests.csproj",
+        "packagesPath": "/Users/aidan/.nuget/packages/",
+        "outputPath": "/Users/aidan/Documents/CS/NET/Tests/obj/",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "/Users/aidan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj": {
+                "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/PageObjects/PageObjects.csproj"
+              },
+              "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj": {
+                "projectPath": "/Users/aidan/Documents/CS/NET/SeleniumWebDriverProject/Utils/Utils.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "dependencies": {
+            "Allure.NUnit": {
+              "target": "Package",
+              "version": "[2.9.5-preview.1, )"
+            },
+            "Microsoft.Net.Compilers.Toolset": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[114.0.5735.9000, )"
+            },
+            "Selenium.WebDriver.GeckoDriver": {
+              "target": "Package",
+              "version": "[0.33.0, )"
+            },
+            "Selenium.WebDriver.MSEdgeDriver": {
+              "target": "Package",
+              "version": "[114.0.1823.58, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

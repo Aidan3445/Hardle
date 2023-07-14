@@ -1,0 +1,86 @@
+{
+  "uuid": "94fec05f-f210-4d30-b75c-a068b4c04bb0-tr-0-1009",
+  "historyId": "Tests.Tests.AllureReportTests.LoseGameTests",
+  "fullName": "Tests.Tests.AllureReportTests.LoseGameTests",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "LoseGameTests"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "LoseGameTests",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "LoseGameTests"
+  },
+  "stage": "finished",
+  "description": "Check that the end screen displays that the game was lost and chart bars are grey.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "Enter 9 bad guesses: CANOE."
+        }
+      ],
+      "start": 1689375681606,
+      "stop": 1689375681606
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "f13301b825724f08978fa195292c9a92-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "9ed088a99782408a982de92d757e198a-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689375675918,
+  "stop": 1689375687135
+}

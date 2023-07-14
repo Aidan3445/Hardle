@@ -1,0 +1,12 @@
+{
+  "uuid": "tc-0-1001",
+  "name": "Tests.Tests.AllureReportTests.LoseGameTests",
+  "children": [
+    "37245db4-07b1-40fa-ad54-1f4a469d7752-tr-0-1001"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1689214427334,
+  "stop": 1689214439440
+}

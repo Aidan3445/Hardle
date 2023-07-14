@@ -1,0 +1,12 @@
+{
+  "uuid": "tc-0-1005",
+  "name": "Tests.Tests.AllureReportTests.DeleteKeyTest",
+  "children": [
+    "31c22233-b6c8-4448-9bf9-c0f38ccf9454-tr-0-1005"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1688941709396,
+  "stop": 1688941717687
+}

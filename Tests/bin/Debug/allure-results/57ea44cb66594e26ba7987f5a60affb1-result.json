@@ -1,0 +1,87 @@
+{
+  "uuid": "b3c42fe9-6ced-4e35-894b-f90e81118702-tr-0-1001",
+  "historyId": "Tests.Tests.AllureReportTests.GuessPegUIUpdateTest",
+  "fullName": "Tests.Tests.AllureReportTests.GuessPegUIUpdateTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "16"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "GuessPegUIUpdateTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "GuessPegUIUpdateTest",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "  Expected and actual are both <System.String[5]>\n  Values differ at index [0]\n  Expected string length 18 but was 22. Strings differ at index 3.\n  Expected: \"rgb(255, 255, 255)\"\n  But was:  \"rgba(255, 255, 255, 1)\"\n  --------------^\n",
+    "trace": "  at Tests.Tests.AllureReportTests.GuessPegUIUpdateTest () [0x00043] in /Users/aidan/Documents/CS/NET/Tests/Tests/AllureReportTests.cs:136 \n"
+  },
+  "stage": "finished",
+  "description": "Check that pegs are colored when guesses are made.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "type guess: CANOE"
+        }
+      ],
+      "start": 1689213571800,
+      "stop": 1689213571803
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "e24c75d6936346e499b4d8ff8fe7951e-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "bfd2decdff0f428ea3fe3177d07c66ed-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689213565413,
+  "stop": 1689213634181
+}

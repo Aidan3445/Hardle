@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
+    <PropertyGroup>
+        <ProjectGuid>{A4282BB1-AE42-48F0-ABB1-F7676DB7488C}</ProjectGuid>
+        <ProjectTypeGuids>{A3F8F2AB-B479-4A4A-A458-A89E7DC349F1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
+        <RootNamespace>Tests</RootNamespace>
+        <AssemblyName>Tests</AssemblyName>
+        <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
+        <UseXamMacFullFramework>true</UseXamMacFullFramework>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <CreatePackage>false</CreatePackage>
+        <EnablePackageSigning>false</EnablePackageSigning>
+        <IncludeMonoRuntime>false</IncludeMonoRuntime>
+        <UseSGen>false</UseSGen>
+        <HttpClientHandler></HttpClientHandler>
+        <LinkMode>None</LinkMode>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <DefineConstants></DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <CreatePackage>false</CreatePackage>
+        <EnablePackageSigning>false</EnablePackageSigning>
+        <IncludeMonoRuntime>false</IncludeMonoRuntime>
+        <UseSGen>false</UseSGen>
+        <HttpClientHandler></HttpClientHandler>
+        <LinkMode>None</LinkMode>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Drawing.Common">
+            <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\Current\lib\mono\4.5\Facades\System.Drawing.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Drawing.Primitives">
+            <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Mac.framework\Versions\Current\lib\mono\4.5\Facades\System.Drawing.Primitives.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Mac" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Common\PegColor.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Common\TestBase.cs" />
+        <Compile Include="Tests\AllureReportTests.cs" />
+        <Compile Include="Tests\HardleTests.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\SeleniumWebDriverProject\PageObjects\PageObjects.csproj">
+            <Project>{C3773E6B-B42B-495C-AF3E-830A3FE37B53}</Project>
+            <Name>PageObjects</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\SeleniumWebDriverProject\Utils\Utils.csproj">
+            <Project>{5a317a8e-16e3-490a-8cea-9d6afae7ef7e}</Project>
+            <Name>Utils</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Allure.NUnit" Version="2.9.5-preview.1" />
+        <PackageReference Include="NUnit" Version="3.13.3" />
+        <PackageReference Include="Selenium.Support" Version="4.10.0" />
+        <PackageReference Include="Selenium.WebDriver" Version="4.10.0" />
+        <PackageReference Include="Microsoft.Net.Compilers.Toolset">
+            <Version>4.6.0</Version>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="114.0.5735.9000" />
+        <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.33.0" />
+        <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="114.0.1823.58" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="allureConfig.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
+    <Import Project="..\packages\Selenium.WebDriver.4.10.0\build\Selenium.WebDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.4.10.0\build\Selenium.WebDriver.targets')" />
+    <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+</Project>

@@ -1,0 +1,126 @@
+{
+  "uuid": "e05444f4-5c49-4995-b9de-b9c0f57acb70-tr-0-1008",
+  "historyId": "Tests.Tests.AllureReportTests.GuessPegUIUpdateTest",
+  "fullName": "Tests.Tests.AllureReportTests.GuessPegUIUpdateTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "GuessPegUIUpdateTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "GuessPegUIUpdateTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "GuessPegUIUpdateTest"
+  },
+  "stage": "finished",
+  "description": "Check that pegs are colored when guesses are made.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "type guess: CANOE"
+        }
+      ],
+      "start": 1689375657867,
+      "stop": 1689375657867
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter guess"
+        }
+      ],
+      "start": 1689375658742,
+      "stop": 1689375658742
+    },
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "peg color indices: System.Collections.ArrayList"
+        }
+      ],
+      "start": 1689375658842,
+      "stop": 1689375658842
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "f9bf00cb8f494e2bb5c926bfe52389e4-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "0e0156c2bf46462ab9c054ee492ba994-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689375652599,
+  "stop": 1689375659141
+}

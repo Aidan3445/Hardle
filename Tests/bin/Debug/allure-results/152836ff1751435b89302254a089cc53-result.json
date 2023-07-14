@@ -1,0 +1,86 @@
+{
+  "uuid": "79fecc7d-3ace-4f25-b99e-4dbe1fcc7a22-tr-0-1005",
+  "historyId": "Tests.Tests.AllureReportTests.DeleteKeyTest",
+  "fullName": "Tests.Tests.AllureReportTests.DeleteKeyTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "DeleteKeyTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "DeleteKeyTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "DeleteKeyTest"
+  },
+  "stage": "finished",
+  "description": "Check that backspace physical key deletes correctly.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter T key and then delete (physical)."
+        }
+      ],
+      "start": 1689375608678,
+      "stop": 1689375608681
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "c98998d52c6e47c0af926c6ce4e81d9d-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "a1c96d57e2b4415993ceb0334b30985e-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1689375601480,
+  "stop": 1689375609754
+}

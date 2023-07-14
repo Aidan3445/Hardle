@@ -1,0 +1,86 @@
+{
+  "uuid": "47ac1b37-4333-462e-8f60-16bb08fa5617-tr-0-1006",
+  "historyId": "Tests.Tests.AllureReportTests.MakeGuessTest",
+  "fullName": "Tests.Tests.AllureReportTests.MakeGuessTest",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "Aidans-MacBook-Pro"
+    },
+    {
+      "name": "package",
+      "value": "Tests.Tests"
+    },
+    {
+      "name": "testMethod",
+      "value": "MakeGuessTest"
+    },
+    {
+      "name": "testClass",
+      "value": "AllureReportTests"
+    }
+  ],
+  "links": [
+    {
+      "name": "Issue-1",
+      "url": "https://jira.com/browse/Issue-1",
+      "type": "issue"
+    },
+    {
+      "name": "TMS-1",
+      "url": "https://testrail.com/browse/TMS-1",
+      "type": "tms"
+    }
+  ],
+  "name": "MakeGuessTest",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "MakeGuessTest"
+  },
+  "stage": "finished",
+  "description": "Check that guesses are entered correctly with the physical keyboard.",
+  "steps": [
+    {
+      "name": "message",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "message",
+          "value": "enter guess (physical)"
+        }
+      ],
+      "start": 1688941788250,
+      "stop": 1688941788250
+    }
+  ],
+  "attachments": [
+    {
+      "name": "ending test",
+      "source": "a07fcac566e346c8bd3361f6d5f24279-attachment",
+      "type": "image/png"
+    },
+    {
+      "name": "Console Output",
+      "source": "70b6ca836bbe48c484b2799cc3c2198e-attachment.txt",
+      "type": "text/plain"
+    }
+  ],
+  "parameters": [],
+  "start": 1688941783040,
+  "stop": 1688941789410
+}

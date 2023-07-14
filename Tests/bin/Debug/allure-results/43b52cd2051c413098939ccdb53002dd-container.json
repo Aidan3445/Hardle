@@ -1,0 +1,12 @@
+{
+  "uuid": "tc-0-1010",
+  "name": "Tests.Tests.AllureReportTests.WinGameTest",
+  "children": [
+    "da6d2259-8000-40df-b9b7-555b1bb42402-tr-0-1010"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1689375714120,
+  "stop": 1689375734189
+}

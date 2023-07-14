@@ -1,0 +1,12 @@
+{
+  "uuid": "tc-0-1007",
+  "name": "Tests.Tests.AllureReportTests.GuessResetUIUpdateTest",
+  "children": [
+    "1e82fa58-3605-4ef0-94e8-5bddc2a469b4-tr-0-1007"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1688941766507,
+  "stop": 1688941772947
+}

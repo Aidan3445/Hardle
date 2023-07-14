@@ -1,0 +1,12 @@
+{
+  "uuid": "tc-0-1003",
+  "name": "Tests.Tests.AllureReportTests.DOMMakeGuessTest",
+  "children": [
+    "d295ace2-361c-4b05-8a4e-8362ccde4959-tr-0-1003"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1688935534092,
+  "stop": 1688935561218
+}
