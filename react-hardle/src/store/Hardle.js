@@ -75,7 +75,7 @@ var store = {
         break;
       case "Enter":
         if (currentWord.length === 5) {
-          if (HardleWords.allWords.includes(currentWord)) {
+          if (HardleWords.allWords.includes(currentWord) || HardleWords.secretWords.includes(currentWord)) {
             this.guessCount += 1;
             this.onWinLoss();
           } else {
