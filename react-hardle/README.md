@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Prerequisites
+
+- Node.js >= 22.0.0 (LTS version 22.21.1 recommended)
+- npm >= 10.0.0
+
+You can use [nvm](https://github.com/nvm-sh/nvm) to install the correct Node version:
+```bash
+nvm install
+nvm use
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
