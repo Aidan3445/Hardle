@@ -93,6 +93,10 @@ function Definition(props) {
           let definitionText = `Definition: ${partOfSpeech} - ${definition}`;
           setDefinition(definitionText);
         }
+      })
+      .catch((error) => {
+        console.error("Error fetching definition:", error);
+        setDefinition("Definition not found. Reload the page in a few seconds.");
       });
   }
 
@@ -150,7 +154,7 @@ function Share(props) {
     }
     copyPaste += "\rhttps://hardle.netlify.app/";
     // copy to clipboard
-    return window.navigator.clipboard.writeText(copyPaste).then(function () {
+    return window.navigator.clipboard.writeText(copyPaste).then(function() {
       // popup to notify copy
       newPopup("Copied to clipboard");
     });

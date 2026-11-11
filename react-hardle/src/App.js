@@ -68,7 +68,6 @@ export default observer(function App() {
           <Guess
             store={store}
             guess={guess}
-            tileColors={store.tileColors[index]}
             isGuessed={store.guessCount > index}
             wordIndex={index}
             key={index}

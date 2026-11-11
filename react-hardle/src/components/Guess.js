@@ -6,7 +6,7 @@ import Trash from "../images/trash.png";
 // component for a single guess: reset button, tiles, and pegs
 // props: array with charaters in the guess, pegs for the guess's colors
 export default observer(function Guess(props) {
-  const { store, guess, tileColors, isGuessed, wordIndex } = props;
+  const { store, guess, isGuessed, wordIndex } = props;
 
   function tileClicked(e, letterIndex) {
     e.target.blur();
@@ -26,7 +26,11 @@ export default observer(function Guess(props) {
         src={Trash}
         alt="reset"
         style={{
-          opacity: isGuessed ? (store.isWordColored(wordIndex) ? 1 : 0.5) : 0,
+          opacity: isGuessed
+            ? store.isWordColored(wordIndex) && !store.isMonochrome(wordIndex)
+              ? 1
+              : 0.5
+            : 0,
         }}
         onClick={resetTiles}
       />
@@ -36,7 +40,7 @@ export default observer(function Guess(props) {
           .map((_, index) => (
             <Tile
               letter={guess[index]}
-              color={tileColors[index]}
+              color={index < guess.length ? store.getTileColor(wordIndex, index) : 0}
               handleClick={(e) => tileClicked(e, index)}
               key={index}
             />
